@@ -157,8 +157,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             do {
                 String id = cursor.getString(0);
                 String nom = cursor.getString(1);
+                String nom2 = cursor.getString(2);
+                String nom3 = cursor.getString(3);
+                String nom4 = cursor.getString(4);
+                String nom5 = cursor.getString(5);
 
-                sb.append("\n").append(id).append("\n").append(nom).append("\n");
+                sb.append("\n").append(id).append("\n").append(nom).append("\n").append(nom2).append("\n").append(nom3).append("\n").append(nom4).append("\n").append(nom5);
             } while (cursor.moveToNext());
             cursor.close();
         }
