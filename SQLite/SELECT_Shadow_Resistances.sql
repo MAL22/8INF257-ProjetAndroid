@@ -1,0 +1,1 @@
+SELECT d.Name AS `Resistance` FROM DamageTypes as 'd', Resistances as 'r',Shadows as 's' WHERE r.ID_Shadow = s.ID and r.ID_DamageType = d.ID

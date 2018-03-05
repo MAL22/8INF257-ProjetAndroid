@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Vector;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -35,23 +36,39 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void createDatabase() throws IOException {
         Log.v("wiki", "createDatabase");
 
-        boolean dbExist = checkDatabase();
-
-        if (dbExist) {
-            Log.v("wiki", "Database exists");
+        SQLiteDatabase db = this.getReadableDatabase();
+        if (checkDatabase()) {
+            Log.v("wiki", "Database found");
+            onUpgrade(db, db.getVersion(), DATABASE_VERSION);
+            Log.v("wiki", "Database upgraded");
+            db.close();
         } else {
             Log.v("wiki", "Database does not exist");
 
             try {
-                this.getReadableDatabase();
-                Log.v("wiki", "Database exists");
-                this.close();
-                Log.v("wiki", "Database exists");
+                db.close();
                 copyDatabase();
             } catch (IOException e) {
                 throw new Error("Error copying database");
             }
         }
+
+        /*if (checkDatabase()) {
+            openDatabase();
+            onUpgrade(myDatabase,myDatabase.getVersion(),DATABASE_VERSION);
+            Log.v("wiki", "Database upgraded");
+        } else {
+            Log.v("wiki", "Database does not exist");
+
+            try {
+                this.getReadableDatabase();
+                Log.v("wiki", "Database opened");
+                this.close();
+                copyDatabase();
+            } catch (IOException e) {
+                throw new Error("Error copying database");
+            }
+        }*/
     }
 
     private void copyDatabase() throws IOException {
@@ -63,7 +80,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         OutputStream myOutput = new FileOutputStream(outFileName);
         InputStream myInput = myContext.getAssets().open(DATABASE_NAME);
 
-        Log.v("DIM", "myInput : " + myInput);
+        Log.v("wiki", "myInput : " + myInput);
 
         byte[] buffer = new byte[1024];
         int length;
@@ -81,22 +98,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     private boolean checkDatabase() {
-        Log.v("wiki", "Database exists");
-
         boolean checkDB = false;
 
         try {
             String myPath = DATABASE_PATH + DATABASE_NAME;
-            Log.v("wiki", "Database exists");
-
             File dbFile = new File(myPath);
-            Log.v("wiki", "Database exists");
-
             checkDB = dbFile.exists();
             Log.v("wiki", "Database exists");
 
         } catch (SQLiteException e) {
-            Log.v("wiki", "Database exists");
+            Log.v("wiki", "Database doesn't exist");
         }
         return checkDB;
     }
@@ -105,11 +116,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         File file = new File(DATABASE_PATH + DATABASE_NAME);
         if (file.exists()) {
             file.delete();
-            System.out.println("Delete db file");
+            Log.v("wiki", "Database deleted");
         }
     }
 
-    public void openDatabase() throws SQLiteException {
+    public void openDatabase() throws SQLException {
         String myPath = DATABASE_PATH + DATABASE_NAME;
         myDatabase = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READWRITE);
     }
@@ -120,52 +131,77 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         super.close();
     }
 
+    @Override
     public void onCreate(SQLiteDatabase db) {
+        try {
+            copyDatabase();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
+    @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         if (newVersion > oldVersion) {
-            Log.v("db", "db version incremented");
+            Log.v("wiki", "Database version changed");
             db_Delete();
         }
     }
 
-    public String getDatabaseData() {
+    public Vector getDatabaseData() {
 
         StringBuilder sb = new StringBuilder();
 
-        Log.v("DIM", "isOpen : " + myDatabase.isOpen());
-        Log.v("DIM", "isReadOnly : " + myDatabase.isReadOnly());
-        Log.v("DIM", "NAME : " + myDatabase.getPath());
+        Log.v("wiki", "isOpen : " + myDatabase.isOpen());
+        Log.v("wiki", "isReadOnly : " + myDatabase.isReadOnly());
+        Log.v("wiki", "NAME : " + myDatabase.getPath());
 
-        Cursor cursor = myDatabase.rawQuery("select * from Shadows", null);
+        Cursor cursor = myDatabase.rawQuery("SELECT sh.FakeName as `Fake name`,sh.RealName as `Real name`,sh.History as `History`,a.Name as `Arcana`,p.Name AS `Personality`,sh.Strength as `Strength`,sh.Magic as `Magic`,sh.Endurance as `Endurance`,sh.Agility as `Agility`,sh.Luck as `Luck`\n" +
+                "FROM Shadows AS 'sh',Arcana AS 'a',Personalities AS 'p'\n" +
+                "WHERE sh.Arcana_ID = a.ID and sh.Personality_ID = p.ID", null);//myDatabase.rawQuery("select * from Shadows", null);
 
-        Log.v("DIM", "MyDataBase : " + myDatabase.getPath() + " */* " + myDatabase.toString());
+        Log.v("wiki", "MyDataBase : " + myDatabase.getPath() + " */* " + myDatabase.toString());
 
         String nomColonnes[] = cursor.getColumnNames();
 
-        Log.v("DIM", "Nombre Colonnes : " + nomColonnes.length);
+        Log.v("wiki", "Nombre Colonnes : " + nomColonnes.length);
 
         for (String nomColonne : nomColonnes)
-            Log.v("DIM", "NOM DE COLONNE : " + nomColonne);
+            Log.v("wiki", "NOM DE COLONNE : " + nomColonne);
 
-        Log.v("DIM", "cursor.getCount() : " + cursor.getCount());
-        Log.v("DIM", "cursor.getCount() : " + cursor.getCount());
+        Log.v("wiki", "cursor.getCount() : " + cursor.getCount());
+
+        Vector<Vector<String>> struct = new Vector();
 
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             do {
-                String id = cursor.getString(0);
+                Vector<String> shadow = new Vector();
+
+                shadow.add(cursor.getString(0));
+                shadow.add(cursor.getString(1));
+                shadow.add(cursor.getString(2));
+                shadow.add(cursor.getString(3));
+                shadow.add(cursor.getString(4));
+                shadow.add(cursor.getString(5));
+                shadow.add(cursor.getString(6));
+                shadow.add(cursor.getString(7));
+                shadow.add(cursor.getString(8));
+                shadow.add(cursor.getString(9));
+
+                struct.add(shadow);
+
+                /*String id = cursor.getString(0);
                 String nom = cursor.getString(1);
                 String nom2 = cursor.getString(2);
                 String nom3 = cursor.getString(3);
                 String nom4 = cursor.getString(4);
                 String nom5 = cursor.getString(5);
 
-                sb.append("\n").append(id).append("\n").append(nom).append("\n").append(nom2).append("\n").append(nom3).append("\n").append(nom4).append("\n").append(nom5);
+                sb.append("\n").append(id).append("\n").append(nom).append("\n").append(nom2).append("\n").append(nom3).append("\n").append(nom4).append("\n").append(nom5);*/
             } while (cursor.moveToNext());
             cursor.close();
         }
-        return sb.toString();
+        return struct;//sb.toString();
     }
 }

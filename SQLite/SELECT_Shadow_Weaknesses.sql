@@ -1,0 +1,1 @@
+SELECT d.Name AS `Weakness` FROM DamageTypes as 'd', Weaknesses as 'w',Shadows as 's' WHERE w.ID_Shadow = s.ID and w.ID_DamageType = d.ID

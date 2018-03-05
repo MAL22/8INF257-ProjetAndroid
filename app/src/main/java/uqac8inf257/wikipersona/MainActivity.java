@@ -8,31 +8,54 @@ import android.widget.Toast;
 
 import java.io.IOException;
 
+import android.database.SQLException;
+
+import java.util.Vector;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+/*
+        DatabaseHelper db = new DatabaseHelper(this);
+
+        try {
+            db.createDatabase();
+        } catch (IOException e) {
+            //throw new Error("Unable create db");
+            e.printStackTrace();
+        }
+
+        try {
+            db.openDatabase();
+        } catch (SQLException sqle) {
+            //throw sqle;
+            sqle.printStackTrace();
+        }
+
+
+        Vector result = db.getDatabaseData();
+
+        StringBuilder stuff = new StringBuilder();
+
+        for (int i = 0; i < result.size(); i++) {
+            Vector inner = ((Vector) result.get(i));
+            for (int j = 0; j < inner.size(); j++) {
+                stuff.append(inner.get(j));
+            }
+        }
+        Log.v("wiki",stuff.toString());
+        */
     }
 
     public void testClick(View v) {
         Log.v("wiki", "CLICK!");
 
-        String result = "VIDE";
-        DatabaseHelper db = new DatabaseHelper(getApplicationContext());
-        try {
-            db.createDatabase();
-            db.openDatabase();
-            result = db.getDatabaseData();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            db.closeDatabase();
-        }
 
-        Toast toast = Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG);
-        toast.show();
+        //Toast toast = Toast.makeText(getApplicationContext(), stuff, Toast.LENGTH_LONG);
+        //toast.show();
 
     }
 }
