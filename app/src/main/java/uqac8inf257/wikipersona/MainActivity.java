@@ -12,13 +12,19 @@ import android.database.SQLException;
 
 import java.util.Vector;
 
+import uqac8inf257.wikipersona.helper.DatabaseHelper;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-/*
+    }
+
+    public void testClick(View v) {
+        Log.v("wiki", "CLICK!");
+
         DatabaseHelper db = new DatabaseHelper(this);
 
         try {
@@ -34,8 +40,6 @@ public class MainActivity extends AppCompatActivity {
             //throw sqle;
             sqle.printStackTrace();
         }
-
-
         Vector result = db.getDatabaseData();
 
         StringBuilder stuff = new StringBuilder();
@@ -47,15 +51,9 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         Log.v("wiki",stuff.toString());
-        */
-    }
 
-    public void testClick(View v) {
-        Log.v("wiki", "CLICK!");
-
-
-        //Toast toast = Toast.makeText(getApplicationContext(), stuff, Toast.LENGTH_LONG);
-        //toast.show();
+        Toast toast = Toast.makeText(getApplicationContext(), stuff, Toast.LENGTH_LONG);
+        toast.show();
 
     }
 }

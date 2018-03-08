@@ -1,4 +1,4 @@
-package uqac8inf257.wikipersona;
+package uqac8inf257.wikipersona.helper;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -21,7 +21,7 @@ import android.util.Log;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    private SQLiteDatabase myDatabase;
+    protected SQLiteDatabase myDatabase;
     private final Context myContext;
 
     private static final String DATABASE_NAME = "personawiki.db";
@@ -36,39 +36,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void createDatabase() throws IOException {
         Log.v("wiki", "createDatabase");
 
-        SQLiteDatabase db = this.getReadableDatabase();
-        if (checkDatabase()) {
-            Log.v("wiki", "Database found");
-            onUpgrade(db, db.getVersion(), DATABASE_VERSION);
-            Log.v("wiki", "Database upgraded");
-            db.close();
+        boolean dbExist = checkDatabase();
+
+        if (dbExist) {
+            //onUpgrade(myDatabase,myDatabase.getVersion(),DATABASE_VERSION);
         } else {
             Log.v("wiki", "Database does not exist");
 
             try {
-                db.close();
+                SQLiteDatabase db = this.getReadableDatabase();
+                Log.v("wiki", "Database opened");
+                if (db.isOpen()) {
+                    db.close();
+                }
+
                 copyDatabase();
             } catch (IOException e) {
                 throw new Error("Error copying database");
             }
         }
-
-        /*if (checkDatabase()) {
-            openDatabase();
-            onUpgrade(myDatabase,myDatabase.getVersion(),DATABASE_VERSION);
-            Log.v("wiki", "Database upgraded");
-        } else {
-            Log.v("wiki", "Database does not exist");
-
-            try {
-                this.getReadableDatabase();
-                Log.v("wiki", "Database opened");
-                this.close();
-                copyDatabase();
-            } catch (IOException e) {
-                throw new Error("Error copying database");
-            }
-        }*/
     }
 
     private void copyDatabase() throws IOException {
@@ -133,11 +119,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        try {
-            copyDatabase();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override
@@ -156,7 +137,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Log.v("wiki", "isReadOnly : " + myDatabase.isReadOnly());
         Log.v("wiki", "NAME : " + myDatabase.getPath());
 
-        Cursor cursor = myDatabase.rawQuery("SELECT sh.FakeName as `Fake name`,sh.RealName as `Real name`,sh.History as `History`,a.Name as `Arcana`,p.Name AS `Personality`,sh.Strength as `Strength`,sh.Magic as `Magic`,sh.Endurance as `Endurance`,sh.Agility as `Agility`,sh.Luck as `Luck`\n" +
+        Cursor cursor = myDatabase.rawQuery("SELECT sh.id as `ID`,sh.FakeName as `Fake name`,sh.RealName as `Real name`,sh.History as `History`,a.Name as `Arcana`,p.Name AS `Personality`,sh.Strength as `Strength`,sh.Magic as `Magic`,sh.Endurance as `Endurance`,sh.Agility as `Agility`,sh.Luck as `Luck`\n" +
                 "FROM Shadows AS 'sh',Arcana AS 'a',Personalities AS 'p'\n" +
                 "WHERE sh.Arcana_ID = a.ID and sh.Personality_ID = p.ID", null);//myDatabase.rawQuery("select * from Shadows", null);
 
