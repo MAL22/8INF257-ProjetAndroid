@@ -1,3 +1,27 @@
 <resources>
     <string name="app_name">WikiPersona</string>
+    <string name="app_fullname">Pocket Persona</string>
+
+    <string name="synopsis_title">Synopsis</string>
+
+    <string name="gameInfo_title">Game Information</string>
+    <string name="gameInfo_dev">Developer</string>
+    <string name="gameInfo_devName">Atlus (P-Studio)</string>
+    <string name="gameInfo_pub">Publisher</string>
+    <string name="gameInfo_pub1">Atlus (JPN, NA)</string>
+    <string name="gameInfo_pub2">Deep Silver (PAL)</string>
+    <string name="gameInfo_pub3">Sony</string>
+    <string name="gameInfo_genreTitle">Genre</string>
+    <string name="gameInfo_genre">RPG</string>
+    <string name="gameInfo_plat">Platform</string>
+    <string name="gameInfo_consoles">Playstation 3, Playstation 4</string>
+
+    <string name="gameInfoReleaseDate_title">Releases Dates</string>
+    <string name="gameInfoReleaseDate_Japan">Japan</string>
+    <string name="gameInfoReleaseDate_JapanDate">September 15 2016</string>
+    <string name="gameInfoReleaseDate_NorthAmerica">North America</string>
+    <string name="gameInfoReleaseDate_NorthAmericaDate">April 4 2017</string>
+    <string name="gameInfoReleaseDate_Europe">Europe</string>
+    <string name="gameInfoReleaseDate_EuropeDate">April 4 2017</string>
+
 </resources>
