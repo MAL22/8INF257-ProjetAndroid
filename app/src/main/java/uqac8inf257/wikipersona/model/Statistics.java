@@ -20,4 +20,23 @@ public class Statistics {
         this.luck = luck;
     }
 
+    public int getStrength() {
+        return strength;
+    }
+
+    public int getMagic() {
+        return magic;
+    }
+
+    public int getEndurance() {
+        return endurance;
+    }
+
+    public int getAgility() {
+        return agility;
+    }
+
+    public int getLuck() {
+        return luck;
+    }
 }
