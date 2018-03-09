@@ -6,24 +6,49 @@ package uqac8inf257.wikipersona.model;
 
 public class Shadow {
 
-    private int id;
+    private final int id;
     private String fakeName;
     private String realName;
     private String history;
-    private String arcana;
-    private String personality;
+    private Arcana arcana;
+    private Personality personality;
     private Statistics stats;
 
-    public Shadow(int id, String fakeName, String realName, String history, String arcana, String personality, Statistics stats) {
+    public Shadow(int id, String fakeName, String realName, String history, int arcana_id, String arcana_name, int personality_id, String personality_name, Statistics stats) {
         this.id = id;
         this.realName = realName;
         this.fakeName = fakeName;
         this.history = history;
-        this.arcana = arcana;
-        this.personality = personality;
+        this.arcana = new Arcana(arcana_id, arcana_name);
+        this.personality = new Personality(personality_id, personality_name);
         this.stats = stats;
-
     }
 
+    public int getId() {
+        return id;
+    }
 
+    public String getFakeName() {
+        return fakeName;
+    }
+
+    public String getRealName() {
+        return realName;
+    }
+
+    public String getHistory() {
+        return history;
+    }
+
+    public Arcana getArcana() {
+        return arcana;
+    }
+
+    public Personality getPersonality() {
+        return personality;
+    }
+
+    public Statistics getStats() {
+        return stats;
+    }
 }

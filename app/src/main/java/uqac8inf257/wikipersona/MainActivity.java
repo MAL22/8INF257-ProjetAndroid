@@ -13,6 +13,8 @@ import android.database.SQLException;
 import java.util.Vector;
 
 import uqac8inf257.wikipersona.helper.DatabaseHelper;
+import uqac8inf257.wikipersona.helper.SelectShadows;
+import uqac8inf257.wikipersona.model.Shadow;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,9 +27,9 @@ public class MainActivity extends AppCompatActivity {
     public void testClick(View v) {
         Log.v("wiki", "CLICK!");
 
-        DatabaseHelper db = new DatabaseHelper(this);
+        SelectShadows db = new SelectShadows(this);
 
-        try {
+        /*try {
             db.createDatabase();
         } catch (IOException e) {
             //throw new Error("Unable create db");
@@ -39,18 +41,23 @@ public class MainActivity extends AppCompatActivity {
         } catch (SQLException sqle) {
             //throw sqle;
             sqle.printStackTrace();
-        }
-        Vector result = db.getDatabaseData();
+        }*/
+        Vector<Shadow> result = db.getData();
 
         StringBuilder stuff = new StringBuilder();
 
         for (int i = 0; i < result.size(); i++) {
-            Vector inner = ((Vector) result.get(i));
-            for (int j = 0; j < inner.size(); j++) {
-                stuff.append(inner.get(j));
-            }
+            Shadow inner = result.get(i);
+            stuff.append(inner.getId());
+            stuff.append(inner.getFakeName());
+            stuff.append(inner.getRealName());
+            stuff.append(inner.getHistory());
+            stuff.append(inner.getArcana());
+            stuff.append(inner.getHistory());
+            stuff.append(inner.getStats());
         }
-        Log.v("wiki",stuff.toString());
+
+        Log.v("wiki", stuff.toString());
 
         Toast toast = Toast.makeText(getApplicationContext(), stuff, Toast.LENGTH_LONG);
         toast.show();
