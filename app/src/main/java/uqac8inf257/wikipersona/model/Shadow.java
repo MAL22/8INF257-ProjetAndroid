@@ -14,13 +14,13 @@ public class Shadow {
     private Personality personality;
     private Statistics stats;
 
-    public Shadow(int id, String fakeName, String realName, String history, int arcana_id, String arcana_name, int personality_id, String personality_name, Statistics stats) {
+    public Shadow(int id, String fakeName, String realName, String history, Arcana arcana, Personality personality, Statistics stats) {
         this.id = id;
         this.realName = realName;
         this.fakeName = fakeName;
         this.history = history;
-        this.arcana = new Arcana(arcana_id, arcana_name);
-        this.personality = new Personality(personality_id, personality_name);
+        this.arcana = arcana;
+        this.personality = personality;
         this.stats = stats;
     }
 

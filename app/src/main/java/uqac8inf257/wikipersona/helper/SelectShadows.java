@@ -8,6 +8,8 @@ import android.util.Log;
 import java.io.IOException;
 import java.util.Vector;
 
+import uqac8inf257.wikipersona.model.Arcana;
+import uqac8inf257.wikipersona.model.Personality;
 import uqac8inf257.wikipersona.model.Shadow;
 import uqac8inf257.wikipersona.model.Statistics;
 
@@ -25,7 +27,7 @@ public class SelectShadows extends DatabaseHelper {
         super(context);
     }
 
-    public Vector<Shadow> getData() {
+    public Vector<Shadow> execute() {
         try {
             super.createDatabase();
             super.openDatabase();
@@ -54,17 +56,18 @@ public class SelectShadows extends DatabaseHelper {
                         cursor.getString(1),
                         cursor.getString(2),
                         cursor.getString(3),
-                        cursor.getInt(4),
-                        cursor.getString(5),
-                        cursor.getInt(6),
-                        cursor.getString(7),
+                        new Arcana(
+                                cursor.getInt(4),
+                                cursor.getString(5)),
+                        new Personality(
+                                cursor.getInt(6),
+                                cursor.getString(7)),
                         new Statistics(
                                 cursor.getInt(7),
                                 cursor.getInt(8),
                                 cursor.getInt(9),
                                 cursor.getInt(10),
-                                cursor.getInt(11)
-                        )
+                                cursor.getInt(11))
                 );
 
                 lstSh.add(sh);
