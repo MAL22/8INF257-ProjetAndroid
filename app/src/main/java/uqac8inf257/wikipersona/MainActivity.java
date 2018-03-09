@@ -22,13 +22,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
-
-    public void testClick(View v) {
-        Log.v("wiki", "CLICK!");
-
-        SelectShadows db = new SelectShadows(this);
-
         /*try {
             db.createDatabase();
         } catch (IOException e) {
@@ -42,6 +35,22 @@ public class MainActivity extends AppCompatActivity {
             //throw sqle;
             sqle.printStackTrace();
         }*/
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    public void testClick(View v) {
+        Log.v("wiki", "CLICK!");
+
+        SelectShadows db = new SelectShadows(this);
         Vector<Shadow> result = db.getData();
 
         StringBuilder stuff = new StringBuilder();
@@ -52,9 +61,13 @@ public class MainActivity extends AppCompatActivity {
             stuff.append(inner.getFakeName());
             stuff.append(inner.getRealName());
             stuff.append(inner.getHistory());
-            stuff.append(inner.getArcana());
-            stuff.append(inner.getHistory());
-            stuff.append(inner.getStats());
+            stuff.append(inner.getArcana().getName());
+            stuff.append(inner.getPersonality().getName());
+            stuff.append(inner.getStats().getStrength());
+            stuff.append(inner.getStats().getMagic());
+            stuff.append(inner.getStats().getLuck());
+            stuff.append(inner.getStats().getAgility());
+            stuff.append(inner.getStats().getEndurance());
         }
 
         Log.v("wiki", stuff.toString());
