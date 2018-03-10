@@ -14,7 +14,7 @@
     <string name="gameInfo_genreTitle">Genre</string>
     <string name="gameInfo_genre">RPG</string>
     <string name="gameInfo_plat">Platform</string>
-    <string name="gameInfo_consoles">Playstation 3, Playstation 4</string>
+    <string name="gameInfo_consoles">PS3, PS4</string>
 
     <string name="gameInfoReleaseDate_title">Releases Dates</string>
     <string name="gameInfoReleaseDate_Japan">Japan</string>
@@ -23,5 +23,39 @@
     <string name="gameInfoReleaseDate_NorthAmericaDate">April 4 2017</string>
     <string name="gameInfoReleaseDate_Europe">Europe</string>
     <string name="gameInfoReleaseDate_EuropeDate">April 4 2017</string>
+
+    <string name="categoriesTitle">Categories</string>
+    <string name="catFool">Fool</string>
+    <string name="catMagician">Magician</string>
+    <string name="catPriestess">Priestess</string>
+    <string name="catEmpress">Empress</string>
+    <string name="catEmperor">Emperor</string>
+    <string name="catHierophant">Hierophant</string>
+    <string name="catLovers">Lovers</string>
+    <string name="catChariot">Chariot</string>
+    <string name="catStrength">Strength</string>
+    <string name="catHermit">Hermit</string>
+    <string name="catFortune">Fortune</string>
+    <string name="catJustice">Justice</string>
+    <string name="catHangedMan">Hanged Man</string>
+    <string name="catDeath">Death</string>
+    <string name="catTemperance">Temperance</string>
+    <string name="catDevil">Devil</string>
+    <string name="catTower">Tower</string>
+    <string name="catStar">Star</string>
+    <string name="catMoon">Moon</string>
+    <string name="catSun">Sun</string>
+    <string name="catJudgement">Judgement</string>
+
+    <string name="randomPersona">Random Persona</string>
+
+    <string name="statsPersonaTitle">Base stats</string>
+    <string name="statsPersonaStrengthTitle">Strength</string>
+    <string name="statsPersonaMagicTitle">Magic</string>
+    <string name="statsPersonaEnduranceTitle">Endurance</string>
+    <string name="statsPersonaAgilityTitle">Agility</string>
+    <string name="statsPersonaLuckTitle">Luck</string>
+
+    <string name="informationsPersonaTitle">Informations</string>
 
 </resources>

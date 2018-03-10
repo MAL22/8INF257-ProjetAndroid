@@ -1,34 +1,21 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
-
-    <!-- Base application theme. -->
     <style name="P5" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">#8c030e</item>
         <item name="colorPrimaryDark">#000000</item>
         <item name="colorAccent">#f20530</item>
-    </style>
-
-    <!-- Base application theme. -->
-    <style name="P5.Text" parent="P5">
-        <!-- Customize your theme here. -->
         <item name="android:textColor">#ffffff</item>
     </style>
 
-    <style name="P5.TextTitle" parent="P5.Text">
+    <style name="P5.TextTitle" parent="P5">
         <!-- Customize your theme here. -->
         <item name="android:textSize">25dp</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="P5.TextTitleBoldOnly" parent="P5.Text">
+    <style name="P5.TextTitleBoldOnly" parent="P5">
         <!-- Customize your theme here. -->
         <item name="android:textStyle">bold</item>
     </style>
