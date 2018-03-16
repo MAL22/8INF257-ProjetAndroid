@@ -13,6 +13,7 @@ import android.database.SQLException;
 import java.util.Vector;
 
 import uqac8inf257.wikipersona.helper.DatabaseHelper;
+import uqac8inf257.wikipersona.helper.SelectShadow;
 import uqac8inf257.wikipersona.helper.SelectShadows;
 import uqac8inf257.wikipersona.model.Shadow;
 
@@ -50,8 +51,9 @@ public class MainActivity extends AppCompatActivity {
     public void testClick(View v) {
         Log.v("wiki", "CLICK!");
 
-        SelectShadows db = new SelectShadows(this);
-        Vector<Shadow> result = db.getData();
+        //SelectShadows db = new SelectShadows(this);
+        SelectShadow db = new SelectShadow(this);
+        Vector<Shadow> result = db.executeQuery(1);
 
         StringBuilder stuff = new StringBuilder();
 

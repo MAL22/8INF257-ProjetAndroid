@@ -1,17 +1,8 @@
 package uqac8inf257.wikipersona.helper;
 
 import android.content.Context;
-import android.database.Cursor;
-import android.database.SQLException;
-import android.util.Log;
-
-import java.io.IOException;
 import java.util.Vector;
-
-import uqac8inf257.wikipersona.model.Arcana;
-import uqac8inf257.wikipersona.model.Personality;
 import uqac8inf257.wikipersona.model.Shadow;
-import uqac8inf257.wikipersona.model.Statistics;
 
 /**
  * Created by mimil on 2018-03-08.
@@ -27,7 +18,7 @@ public class SelectShadows extends ShadowDB {
         super(context);
     }
 
-    public Vector<Shadow> getData() {
+    public Vector<Shadow> executeQuery() {
         return super.executeQuery(query, null);
     }
 }

@@ -14,24 +14,16 @@ import uqac8inf257.wikipersona.model.Shadow;
 import uqac8inf257.wikipersona.model.Statistics;
 
 /**
- * Created by mimil on 2018-03-08.
+ * Created by mimil on 2018-03-09.
  */
 
-public class SelectShadow extends ShadowDB {
-
-    private final static String query = "SELECT sh.id as `ID`, sh.FakeName as `Fake name`,sh.RealName as `Real name`,sh.History as `History`,a.id,a.Name as `Arcana`,p.id,p.Name AS `Personality`,sh.Strength as `Strength`,sh.Magic as `Magic`,sh.Endurance as `Endurance`,sh.Agility as `Agility`,sh.Luck as `Luck`\n" +
-            "FROM Shadows AS 'sh',Arcana AS 'a',Personalities AS 'p'\n" +
-            "WHERE sh.Arcana_ID = a.ID and sh.Personality_ID = p.ID and sh.ID = ?";
-
-    public SelectShadow(Context context) {
+public abstract class ShadowDB extends DatabaseHelper {
+    public ShadowDB(Context context) {
         super(context);
     }
 
-    public Vector<Shadow> executeQuery(int id) {
-        return super.executeQuery(query, new String[]{String.valueOf(id)});
-    }
-
-    /*public Vector<Shadow> execute(int id) {
+    @Override
+    protected Vector<Shadow> executeQuery(String query, String params[]) {
         try {
             super.createDatabase();
             super.openDatabase();
@@ -41,23 +33,28 @@ public class SelectShadow extends ShadowDB {
             sqle.printStackTrace();
         }
 
-        Vector<Shadow> lstSh = new Vector<>();
+        Cursor cursor;
 
-        Cursor cursor = super.myDatabase.rawQuery(query, new String[]{String.valueOf(id)});
+        if (params == null || params.length == 0)
+            cursor = super.myDatabase.rawQuery(query, null);
+        else
+            cursor = super.myDatabase.rawQuery(query, params);
 
-        String columns[] = cursor.getColumnNames();
+        // Initialisation des structures requises pour l'obtention des données
+        Vector<Shadow> lst = new Vector<>();
+        String cols[] = cursor.getColumnNames();
 
         Log.v("wiki", cursor.getCount() + " éléments.");
-        Log.v("wiki", columns.length + " colonnes.");
+        Log.v("wiki", cols.length + " colonnes.");
 
-        for (String column : columns) {
-            Log.v("wiki", "Nom : " + column);
+        for (String col : cols) {
+            Log.v("wiki", "Nom : " + col);
         }
 
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             do {
-                Shadow sh = new Shadow(
+                Shadow shadow = new Shadow(
                         cursor.getInt(0),
                         cursor.getString(1),
                         cursor.getString(2),
@@ -76,10 +73,11 @@ public class SelectShadow extends ShadowDB {
                                 cursor.getInt(11))
                 );
 
-                lstSh.add(sh);
+                lst.add(shadow);
             } while (cursor.moveToNext());
             cursor.close();
+            super.closeDatabase();
         }
-        return lstSh;
-    }*/
+        return lst;
+    }
 }

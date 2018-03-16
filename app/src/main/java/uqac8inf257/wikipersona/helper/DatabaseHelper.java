@@ -19,7 +19,7 @@ import android.util.Log;
  * Created by mimil on 2018-03-01.
  */
 
-public class DatabaseHelper extends SQLiteOpenHelper {
+public abstract class DatabaseHelper extends SQLiteOpenHelper {
 
     protected SQLiteDatabase myDatabase;
     private final Context myContext;
@@ -128,4 +128,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             db_Delete();
         }
     }
+
+    protected abstract Vector executeQuery(String query, String params[]);
 }
