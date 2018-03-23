@@ -13,179 +13,936 @@
 
 
     <!-- Container for contents of drawer - use NavigationView to make configuration easier -->
-    <android.support.constraint.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/nomPersona"
-            style="@style/P5.TextTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="4dp"
-            android:text="Nom Persona"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/nomShadow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:text="Nom Shadow"
-            app:layout_constraintEnd_toEndOf="@+id/nomPersona"
-            app:layout_constraintStart_toStartOf="@+id/nomPersona"
-            app:layout_constraintTop_toBottomOf="@+id/nomPersona" />
-
-        <ImageView
-            android:id="@+id/imagePersona"
-            android:layout_width="188dp"
-            android:layout_height="158dp"
-            android:layout_marginEnd="2dp"
-            android:layout_marginStart="2dp"
-            android:layout_marginTop="2dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/nomPersona"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@mipmap/persona_5_logo" />
-
-        <TextView
-            android:id="@+id/descriptionPersona"
-            android:layout_width="0dp"
-            android:layout_height="130dp"
-            android:layout_marginTop="4dp"
-            android:text="Description du Persona va ICI. YADADADADADADADADDADADADADADADADADAASDASDADSWWQAS"
-            app:layout_constraintEnd_toEndOf="@+id/nomPersona"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/nomPersona"
-            app:layout_constraintTop_toBottomOf="@+id/nomShadow" />
-
-        <TextView
-            android:id="@+id/informationsPersonaTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/informationsPersonaTitle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout4" />
-
         <android.support.constraint.ConstraintLayout
-            android:id="@+id/constraintLayout4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="2dp"
-            app:layout_constraintEnd_toEndOf="@+id/imagePersona"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/imagePersona"
-            app:layout_constraintTop_toBottomOf="@+id/imagePersona">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/statsPersonaTitle"
-                android:layout_width="0dp"
+                android:id="@+id/nomPersona"
+                style="@style/P5.TextTitle"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="2dp"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="2dp"
-                android:gravity="center"
-                android:paddingEnd="2dp"
-                android:paddingStart="2dp"
-                android:text="@string/statsPersonaTitle"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="4dp"
+                android:text="Nom Persona"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/statsPersonaStrengthTitle"
+                android:id="@+id/nomShadow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
+                android:text="Nom Shadow"
+                app:layout_constraintEnd_toEndOf="@+id/nomPersona"
+                app:layout_constraintStart_toStartOf="@+id/nomPersona"
+                app:layout_constraintTop_toBottomOf="@+id/nomPersona" />
+
+            <ImageView
+                android:id="@+id/imagePersona"
+                android:layout_width="188dp"
+                android:layout_height="158dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="2dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/nomPersona"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@mipmap/persona_5_logo" />
+
+            <TextView
+                android:id="@+id/descriptionPersona"
+                android:layout_width="0dp"
+                android:layout_height="130dp"
                 android:layout_marginTop="4dp"
-                android:text="@string/statsPersonaStrengthTitle"
-                app:layout_constraintEnd_toEndOf="@+id/statsPersonaTitle"
+                android:text="Description du Persona va ICI. YADADADADADADADADDADADADADADADADADAASDASDADSWWQAS"
+                app:layout_constraintEnd_toEndOf="@+id/nomPersona"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/statsPersonaTitle"
-                app:layout_constraintTop_toBottomOf="@+id/statsPersonaTitle" />
+                app:layout_constraintStart_toStartOf="@+id/nomPersona"
+                app:layout_constraintTop_toBottomOf="@+id/nomShadow" />
 
             <TextView
-                android:id="@+id/statsPersonaMagicTitle"
+                android:id="@+id/informationsPersonaTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:gravity="center"
-                android:paddingEnd="2dp"
-                android:paddingStart="2dp"
-                android:text="@string/statsPersonaMagicTitle"
-                app:layout_constraintEnd_toEndOf="@+id/statsPersonaStrengthTitle"
-                app:layout_constraintStart_toStartOf="@+id/statsPersonaStrengthTitle"
-                app:layout_constraintTop_toBottomOf="@+id/statsPersonaStrengthTitle" />
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:text="@string/informationsPersonaTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout4" />
 
-            <TextView
-                android:id="@+id/statsPersonaEnduranceTitle"
-                android:layout_width="wrap_content"
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/constraintLayout4"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="2dp"
-                android:gravity="center"
-                android:paddingEnd="2dp"
-                android:paddingStart="2dp"
-                android:text="@string/statsPersonaEnduranceTitle"
-                app:layout_constraintEnd_toEndOf="@+id/statsPersonaMagicTitle"
-                app:layout_constraintStart_toStartOf="@+id/statsPersonaMagicTitle"
-                app:layout_constraintTop_toBottomOf="@+id/statsPersonaMagicTitle" />
+                android:background="#212121"
+                app:layout_constraintEnd_toEndOf="@+id/imagePersona"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/imagePersona"
+                app:layout_constraintTop_toBottomOf="@+id/imagePersona">
 
-            <TextView
-                android:id="@+id/statsPersonaAgilityTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:gravity="center"
-                android:text="@string/statsPersonaAgilityTitle"
-                app:layout_constraintEnd_toEndOf="@+id/statsPersonaEnduranceTitle"
-                app:layout_constraintStart_toStartOf="@+id/statsPersonaEnduranceTitle"
-                app:layout_constraintTop_toBottomOf="@+id/statsPersonaEnduranceTitle" />
+                <TextView
+                    android:id="@+id/statsPersonaTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center"
+                    android:paddingEnd="2dp"
+                    android:paddingStart="2dp"
+                    android:text="@string/statsPersonaTitle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/statsPersonaLuckTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:gravity="center"
-                android:paddingEnd="2dp"
-                android:paddingStart="2dp"
-                android:text="@string/statsPersonaLuckTitle"
-                app:layout_constraintEnd_toEndOf="@+id/statsPersonaAgilityTitle"
-                app:layout_constraintStart_toStartOf="@+id/statsPersonaAgilityTitle"
-                app:layout_constraintTop_toBottomOf="@+id/statsPersonaAgilityTitle" />
+                <TextView
+                    android:id="@+id/statsPersonaStrengthTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/statsPersonaStrengthTitle"
+                    app:layout_constraintEnd_toEndOf="@+id/statsPersonaTitle"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/statsPersonaTitle"
+                    app:layout_constraintTop_toBottomOf="@+id/statsPersonaTitle" />
+
+                <TextView
+                    android:id="@+id/statsPersonaMagicTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center"
+                    android:paddingEnd="2dp"
+                    android:paddingStart="2dp"
+                    android:text="@string/statsPersonaMagicTitle"
+                    app:layout_constraintEnd_toEndOf="@+id/statsPersonaStrengthTitle"
+                    app:layout_constraintStart_toStartOf="@+id/statsPersonaStrengthTitle"
+                    app:layout_constraintTop_toBottomOf="@+id/statsPersonaStrengthTitle" />
+
+                <TextView
+                    android:id="@+id/statsPersonaEnduranceTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center"
+                    android:paddingEnd="2dp"
+                    android:paddingStart="2dp"
+                    android:text="@string/statsPersonaEnduranceTitle"
+                    app:layout_constraintEnd_toEndOf="@+id/statsPersonaMagicTitle"
+                    app:layout_constraintStart_toStartOf="@+id/statsPersonaMagicTitle"
+                    app:layout_constraintTop_toBottomOf="@+id/statsPersonaMagicTitle" />
+
+                <TextView
+                    android:id="@+id/statsPersonaAgilityTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center"
+                    android:text="@string/statsPersonaAgilityTitle"
+                    app:layout_constraintEnd_toEndOf="@+id/statsPersonaEnduranceTitle"
+                    app:layout_constraintStart_toStartOf="@+id/statsPersonaEnduranceTitle"
+                    app:layout_constraintTop_toBottomOf="@+id/statsPersonaEnduranceTitle" />
+
+                <TextView
+                    android:id="@+id/statsPersonaLuckTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center"
+                    android:paddingEnd="2dp"
+                    android:paddingStart="2dp"
+                    android:text="@string/statsPersonaLuckTitle"
+                    app:layout_constraintEnd_toEndOf="@+id/statsPersonaAgilityTitle"
+                    app:layout_constraintStart_toStartOf="@+id/statsPersonaAgilityTitle"
+                    app:layout_constraintTop_toBottomOf="@+id/statsPersonaAgilityTitle" />
+
+                <TextView
+                    android:id="@+id/strengthStat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:text="999"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/statsPersonaStrengthTitle"
+                    app:layout_constraintTop_toTopOf="@+id/statsPersonaStrengthTitle" />
+
+                <TextView
+                    android:id="@+id/magicStat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="666"
+                    app:layout_constraintEnd_toEndOf="@+id/strengthStat"
+                    app:layout_constraintStart_toStartOf="@+id/strengthStat"
+                    app:layout_constraintTop_toTopOf="@+id/statsPersonaMagicTitle" />
+
+                <TextView
+                    android:id="@+id/enduranceStat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="999"
+                    app:layout_constraintEnd_toEndOf="@+id/magicStat"
+                    app:layout_constraintStart_toStartOf="@+id/magicStat"
+                    app:layout_constraintTop_toTopOf="@+id/statsPersonaEnduranceTitle" />
+
+                <TextView
+                    android:id="@+id/agilityStat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="666"
+                    app:layout_constraintEnd_toEndOf="@+id/enduranceStat"
+                    app:layout_constraintStart_toStartOf="@+id/enduranceStat"
+                    app:layout_constraintTop_toTopOf="@+id/statsPersonaAgilityTitle" />
+
+                <TextView
+                    android:id="@+id/luckStat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="999"
+                    app:layout_constraintEnd_toEndOf="@+id/agilityStat"
+                    app:layout_constraintStart_toStartOf="@+id/agilityStat"
+                    app:layout_constraintTop_toTopOf="@+id/statsPersonaLuckTitle" />
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/constraintLayout3"
+                android:layout_width="0dp"
+                android:layout_height="350dp"
+                android:layout_marginBottom="4dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:background="#8c030e"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/informationsPersonaTitle">
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="4dp"
+                    android:background="#212121"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/tableArcanaTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="2dp"
+                        android:background="#8c030e"
+                        android:gravity="center"
+                        android:paddingBottom="2dp"
+                        android:paddingEnd="12dp"
+                        android:paddingStart="12dp"
+                        android:paddingTop="2dp"
+                        android:text="@string/Arcana"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tableLevelTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
+                        android:background="#8c030e"
+                        android:gravity="center"
+                        android:paddingBottom="2dp"
+                        android:paddingEnd="4dp"
+                        android:paddingStart="4dp"
+                        android:paddingTop="2dp"
+                        android:text="@string/Level"
+                        app:layout_constraintStart_toEndOf="@+id/tableArcanaTitle"
+                        app:layout_constraintTop_toTopOf="@+id/tableArcanaTitle" />
+
+                    <TextView
+                        android:id="@+id/tableHpTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
+                        android:background="#8c030e"
+                        android:paddingBottom="2dp"
+                        android:paddingEnd="7dp"
+                        android:paddingStart="7dp"
+                        android:paddingTop="2dp"
+                        android:text="@string/HP"
+                        app:layout_constraintStart_toEndOf="@+id/tableLevelTitle"
+                        app:layout_constraintTop_toTopOf="@+id/tableArcanaTitle" />
+
+                    <TextView
+                        android:id="@+id/tableSPTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
+                        android:background="#8c030e"
+                        android:gravity="center"
+                        android:paddingBottom="2dp"
+                        android:paddingEnd="8dp"
+                        android:paddingStart="8dp"
+                        android:paddingTop="2dp"
+                        android:text="@string/SP"
+                        app:layout_constraintStart_toEndOf="@+id/tableHpTitle"
+                        app:layout_constraintTop_toTopOf="@+id/tableArcanaTitle" />
+
+                    <TextView
+                        android:id="@+id/tableTypeTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
+                        android:background="#8c030e"
+                        android:gravity="center"
+                        android:paddingBottom="2dp"
+                        android:paddingEnd="12dp"
+                        android:paddingStart="12dp"
+                        android:paddingTop="2dp"
+                        android:text="@string/Type"
+                        app:layout_constraintStart_toEndOf="@+id/tableSPTitle"
+                        app:layout_constraintTop_toTopOf="@+id/tableArcanaTitle" />
+
+                    <TextView
+                        android:id="@+id/tableTxtArcana"
+                        android:layout_width="0dp"
+                        android:layout_height="27dp"
+                        android:layout_marginTop="1dp"
+                        android:gravity="center"
+                        android:paddingBottom="4dp"
+                        android:paddingEnd="4dp"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:background="#000000"
+                        android:text="ARCANA"
+                        app:layout_constraintEnd_toEndOf="@+id/tableArcanaTitle"
+                        app:layout_constraintStart_toStartOf="@+id/tableArcanaTitle"
+                        app:layout_constraintTop_toBottomOf="@+id/tableArcanaTitle" />
+
+                    <TextView
+                        android:id="@+id/tableTxtLevel"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingBottom="4dp"
+                        android:paddingEnd="4dp"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:background="#000000"
+                        android:text="120"
+                        app:layout_constraintBottom_toBottomOf="@+id/tableTxtArcana"
+                        app:layout_constraintEnd_toEndOf="@+id/tableLevelTitle"
+                        app:layout_constraintStart_toStartOf="@+id/tableLevelTitle"
+                        app:layout_constraintTop_toBottomOf="@+id/tableLevelTitle" />
+
+                    <TextView
+                        android:id="@+id/tableTxtHP"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:gravity="center"
+                        android:paddingBottom="4dp"
+                        android:paddingEnd="4dp"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:background="#000000"
+                        android:text="520"
+                        app:layout_constraintBottom_toBottomOf="@+id/tableTxtArcana"
+                        app:layout_constraintEnd_toEndOf="@+id/tableHpTitle"
+                        app:layout_constraintStart_toStartOf="@+id/tableHpTitle"
+                        app:layout_constraintTop_toBottomOf="@+id/tableHpTitle" />
+
+                    <TextView
+                        android:id="@+id/tableTxtSP"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:paddingBottom="4dp"
+                        android:paddingEnd="4dp"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:background="#000000"
+                        android:text="520"
+                        app:layout_constraintBottom_toBottomOf="@+id/tableTxtArcana"
+                        app:layout_constraintEnd_toEndOf="@+id/tableSPTitle"
+                        app:layout_constraintStart_toStartOf="@+id/tableSPTitle"
+                        app:layout_constraintTop_toBottomOf="@+id/tableSPTitle" />
+
+                    <TextView
+                        android:id="@+id/tableTxtType"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="1dp"
+                        android:gravity="center"
+                        android:paddingEnd="4dp"
+                        android:paddingLeft="4dp"
+                        android:background="#000000"
+                        android:text="45665"
+                        app:layout_constraintBottom_toBottomOf="@+id/tableTxtArcana"
+                        app:layout_constraintEnd_toEndOf="@+id/tableTypeTitle"
+                        app:layout_constraintStart_toStartOf="@+id/tableTypeTitle"
+                        app:layout_constraintTop_toBottomOf="@+id/tableTypeTitle" />
+
+                    <TextView
+                        android:id="@+id/tablePhysTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="2dp"
+                        android:background="#8c030e"
+                        android:gravity="center"
+                        android:paddingBottom="4dp"
+                        android:paddingEnd="9dp"
+                        android:paddingStart="9dp"
+                        android:paddingTop="4dp"
+                        android:text="@string/Phys"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tableTxtArcana" />
+
+                    <TextView
+                        android:id="@+id/tableGunTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:background="#8c030e"
+                        android:gravity="center"
+                        android:paddingBottom="4dp"
+                        android:paddingEnd="9dp"
+                        android:paddingStart="9dp"
+                        android:paddingTop="4dp"
+                        android:text="@string/Gun"
+                        app:layout_constraintStart_toEndOf="@+id/tablePhysTitle"
+                        app:layout_constraintTop_toTopOf="@+id/tablePhysTitle" />
+
+                    <TextView
+                        android:id="@+id/tableFireTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:background="#8c030e"
+                        android:gravity="center"
+                        android:paddingBottom="4dp"
+                        android:paddingEnd="9dp"
+                        android:paddingStart="9dp"
+                        android:paddingTop="4dp"
+                        android:text="@string/Fire"
+                        app:layout_constraintStart_toEndOf="@+id/tableGunTitle"
+                        app:layout_constraintTop_toTopOf="@+id/tablePhysTitle" />
+
+                    <TextView
+                        android:id="@+id/tableIceTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:background="#8c030e"
+                        android:gravity="center"
+                        android:paddingBottom="4dp"
+                        android:paddingEnd="9dp"
+                        android:paddingStart="9dp"
+                        android:paddingTop="4dp"
+                        android:text="@string/Ice"
+                        app:layout_constraintStart_toEndOf="@+id/tableFireTitle"
+                        app:layout_constraintTop_toTopOf="@+id/tablePhysTitle" />
+
+                    <TextView
+                        android:id="@+id/tableElecTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:background="#8c030e"
+                        android:gravity="center"
+                        android:paddingBottom="4dp"
+                        android:paddingEnd="9dp"
+                        android:paddingStart="9dp"
+                        android:paddingTop="4dp"
+                        android:text="@string/Elec"
+                        app:layout_constraintStart_toEndOf="@+id/tableIceTitle"
+                        app:layout_constraintTop_toTopOf="@+id/tablePhysTitle" />
+
+                    <TextView
+                        android:id="@+id/tableWindTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:background="#8c030e"
+                        android:gravity="center"
+                        android:paddingBottom="4dp"
+                        android:paddingEnd="9dp"
+                        android:paddingStart="9dp"
+                        android:paddingTop="4dp"
+                        android:text="@string/Wind"
+                        app:layout_constraintStart_toEndOf="@+id/tableElecTitle"
+                        app:layout_constraintTop_toTopOf="@+id/tablePhysTitle" />
+
+                    <TextView
+                        android:id="@+id/tablePsyTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginTop="2dp"
+                        android:background="#8c030e"
+                        android:gravity="center"
+                        android:paddingBottom="4dp"
+                        android:paddingEnd="9dp"
+                        android:paddingStart="9dp"
+                        android:paddingTop="4dp"
+                        android:text="@string/Psy"
+                        app:layout_constraintStart_toEndOf="@+id/tableNuclTitle"
+                        app:layout_constraintTop_toBottomOf="@+id/tableTxtIce" />
+
+                    <TextView
+                        android:id="@+id/tableNuclTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginTop="2dp"
+                        android:background="#8c030e"
+                        android:gravity="center"
+                        android:paddingBottom="4dp"
+                        android:paddingEnd="9dp"
+                        android:paddingStart="9dp"
+                        android:paddingTop="4dp"
+                        android:text="@string/Nucl"
+                        app:layout_constraintStart_toEndOf="@+id/tableBlessTitle"
+                        app:layout_constraintTop_toBottomOf="@+id/tableTxtFire" />
+
+                    <TextView
+                        android:id="@+id/tableBlessTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginTop="2dp"
+                        android:background="#8c030e"
+                        android:gravity="center"
+                        android:paddingBottom="4dp"
+                        android:paddingEnd="9dp"
+                        android:paddingStart="9dp"
+                        android:paddingTop="4dp"
+                        android:text="@string/Bless"
+                        app:layout_constraintStart_toEndOf="@+id/tableCurseTitle"
+                        app:layout_constraintTop_toBottomOf="@+id/tableTxtGun" />
+
+                    <TextView
+                        android:id="@+id/tableCurseTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="2dp"
+                        android:background="#8c030e"
+                        android:gravity="center"
+                        android:paddingBottom="4dp"
+                        android:paddingEnd="9dp"
+                        android:paddingStart="9dp"
+                        android:paddingTop="4dp"
+                        android:text="@string/Curse"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tableTxtPhys" />
+
+                    <TextView
+                        android:id="@+id/tableAlmiTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:background="#8c030e"
+                        android:gravity="center"
+                        android:paddingBottom="4dp"
+                        android:paddingEnd="9dp"
+                        android:paddingStart="9dp"
+                        android:paddingTop="4dp"
+                        android:text="@string/Almi"
+                        app:layout_constraintStart_toEndOf="@+id/tableWindTitle"
+                        app:layout_constraintTop_toTopOf="@+id/tablePhysTitle" />
+
+                    <TextView
+                        android:id="@+id/tableTxtPhys"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:gravity="center"
+                        android:paddingBottom="2dp"
+                        android:paddingEnd="0dp"
+                        android:paddingStart="0dp"
+                        android:paddingTop="2dp"
+                        android:background="#000000"
+                        android:text="WEAK"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="@+id/tablePhysTitle"
+                        app:layout_constraintStart_toStartOf="@+id/tablePhysTitle"
+                        app:layout_constraintTop_toBottomOf="@+id/tablePhysTitle" />
+
+                    <TextView
+                        android:id="@+id/tableTxtGun"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:gravity="center"
+                        android:paddingBottom="2dp"
+                        android:paddingEnd="0dp"
+                        android:paddingStart="0dp"
+                        android:paddingTop="2dp"
+                        android:background="#000000"
+                        android:text="Resist"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tableTxtPhys"
+                        app:layout_constraintEnd_toEndOf="@+id/tableGunTitle"
+                        app:layout_constraintStart_toStartOf="@+id/tableGunTitle"
+                        app:layout_constraintTop_toBottomOf="@+id/tableGunTitle" />
+
+                    <TextView
+                        android:id="@+id/tableTxtFire"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="1dp"
+                        android:gravity="center"
+                        android:paddingBottom="2dp"
+                        android:paddingEnd="0dp"
+                        android:paddingStart="0dp"
+                        android:paddingTop="2dp"
+                        android:background="#000000"
+                        android:text="Absorb"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tableTxtPhys"
+                        app:layout_constraintEnd_toEndOf="@+id/tableFireTitle"
+                        app:layout_constraintStart_toStartOf="@+id/tableFireTitle"
+                        app:layout_constraintTop_toBottomOf="@+id/tableFireTitle" />
+
+                    <TextView
+                        android:id="@+id/tableTxtIce"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="1dp"
+                        android:gravity="center"
+                        android:paddingBottom="2dp"
+                        android:paddingEnd="0dp"
+                        android:paddingTop="2dp"
+                        android:background="#000000"
+                        android:text="-"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tableTxtPhys"
+                        app:layout_constraintEnd_toEndOf="@+id/tableIceTitle"
+                        app:layout_constraintStart_toStartOf="@+id/tableIceTitle"
+                        app:layout_constraintTop_toBottomOf="@+id/tableIceTitle" />
+
+                    <TextView
+                        android:id="@+id/tableTxtElec"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="1dp"
+                        android:gravity="center"
+                        android:paddingBottom="2dp"
+                        android:paddingEnd="0dp"
+                        android:paddingStart="0dp"
+                        android:paddingTop="2dp"
+                        android:background="#000000"
+                        android:text="Resist"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tableTxtPhys"
+                        app:layout_constraintEnd_toEndOf="@+id/tableElecTitle"
+                        app:layout_constraintStart_toStartOf="@+id/tableElecTitle"
+                        app:layout_constraintTop_toBottomOf="@+id/tableElecTitle" />
+
+                    <TextView
+                        android:id="@+id/tableTxtWind"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="1dp"
+                        android:gravity="center"
+                        android:paddingBottom="2dp"
+                        android:paddingEnd="0dp"
+                        android:paddingStart="0dp"
+                        android:paddingTop="2dp"
+                        android:background="#000000"
+                        android:text="Weak"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tableTxtPhys"
+                        app:layout_constraintEnd_toEndOf="@+id/tableWindTitle"
+                        app:layout_constraintStart_toStartOf="@+id/tableWindTitle"
+                        app:layout_constraintTop_toBottomOf="@+id/tableWindTitle" />
+
+                    <TextView
+                        android:id="@+id/tableTxtPsy"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="1dp"
+                        android:gravity="center"
+                        android:paddingBottom="2dp"
+                        android:paddingEnd="0dp"
+                        android:paddingStart="0dp"
+                        android:paddingTop="2dp"
+                        android:background="#000000"
+                        android:text="Resist"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tableTxtPhys"
+                        app:layout_constraintEnd_toEndOf="@+id/tableAlmiTitle"
+                        app:layout_constraintStart_toStartOf="@+id/tableAlmiTitle"
+                        app:layout_constraintTop_toBottomOf="@+id/tableAlmiTitle" />
+
+                    <TextView
+                        android:id="@+id/tableTxtNucl"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:gravity="center"
+                        android:paddingBottom="2dp"
+                        android:paddingEnd="0dp"
+                        android:paddingStart="0dp"
+                        android:paddingTop="2dp"
+                        android:background="#000000"
+                        android:text="Resist"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="@+id/tableCurseTitle"
+                        app:layout_constraintStart_toStartOf="@+id/tableCurseTitle"
+                        app:layout_constraintTop_toBottomOf="@+id/tableCurseTitle" />
+
+                    <TextView
+                        android:id="@+id/tableTxtBless"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:gravity="center"
+                        android:paddingBottom="2dp"
+                        android:paddingEnd="0dp"
+                        android:paddingStart="0dp"
+                        android:paddingTop="2dp"
+                        android:background="#000000"
+                        android:text="Weak"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="@+id/tableBlessTitle"
+                        app:layout_constraintStart_toStartOf="@+id/tableBlessTitle"
+                        app:layout_constraintTop_toBottomOf="@+id/tableBlessTitle" />
+
+                    <TextView
+                        android:id="@+id/tableTxtCurse"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:gravity="center"
+                        android:paddingBottom="2dp"
+                        android:paddingEnd="0dp"
+                        android:paddingStart="0dp"
+                        android:paddingTop="2dp"
+                        android:background="#000000"
+                        android:text="Resist"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="@+id/tableNuclTitle"
+                        app:layout_constraintStart_toStartOf="@+id/tableNuclTitle"
+                        app:layout_constraintTop_toBottomOf="@+id/tableNuclTitle" />
+
+                    <TextView
+                        android:id="@+id/tableTxtAlmi"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:gravity="center"
+                        android:paddingBottom="2dp"
+                        android:paddingEnd="0dp"
+                        android:paddingStart="0dp"
+                        android:paddingTop="2dp"
+                        android:background="#000000"
+                        android:text="Resist"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="@+id/tablePsyTitle"
+                        app:layout_constraintStart_toStartOf="@+id/tablePsyTitle"
+                        app:layout_constraintTop_toBottomOf="@+id/tablePsyTitle" />
+
+                    <TextView
+                        android:id="@+id/tableExpTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginTop="4dp"
+                        android:background="#8c030e"
+                        android:gravity="center"
+                        android:paddingBottom="4dp"
+                        android:paddingEnd="10dp"
+                        android:paddingStart="10dp"
+                        android:paddingTop="4dp"
+                        android:text="@string/EXP"
+                        app:layout_constraintStart_toEndOf="@+id/tablePsyTitle"
+                        app:layout_constraintTop_toTopOf="@+id/tablePsyTitle" />
+
+                    <TextView
+                        android:id="@+id/tableYenTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:background="#8c030e"
+                        android:gravity="center"
+                        android:paddingBottom="4dp"
+                        android:paddingEnd="10dp"
+                        android:paddingStart="10dp"
+                        android:paddingTop="4dp"
+                        android:text="@string/Yen"
+                        app:layout_constraintStart_toEndOf="@+id/tableExpTitle"
+                        app:layout_constraintTop_toTopOf="@+id/tableExpTitle" />
+
+                    <TextView
+                        android:id="@+id/tableTxtEXP"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:gravity="center"
+                        android:paddingBottom="4dp"
+                        android:paddingEnd="4dp"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:background="#000000"
+                        android:text="125"
+                        app:layout_constraintEnd_toEndOf="@+id/tableExpTitle"
+                        app:layout_constraintStart_toStartOf="@+id/tableExpTitle"
+                        app:layout_constraintTop_toBottomOf="@+id/tableExpTitle" />
+
+                    <TextView
+                        android:id="@+id/tableTxtYen"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:gravity="center"
+                        android:paddingBottom="4dp"
+                        android:paddingEnd="4dp"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:background="#000000"
+                        android:text="984"
+                        app:layout_constraintEnd_toEndOf="@+id/tableYenTitle"
+                        app:layout_constraintStart_toStartOf="@+id/tableYenTitle"
+                        app:layout_constraintTop_toBottomOf="@+id/tableYenTitle" />
+
+                    <TextView
+                        android:id="@+id/tableMaterialDropTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="1dp"
+                        android:gravity="center"
+                        android:paddingBottom="2dp"
+                        android:paddingEnd="50dp"
+                        android:paddingStart="50dp"
+                        android:paddingTop="2dp"
+                        android:background="#8c030e"
+                        android:text="@string/MaterialDrop"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tableTxtEXP" />
+
+                    <TextView
+                        android:id="@+id/tableSkillCardTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="1dp"
+                        android:gravity="center"
+                        android:paddingBottom="2dp"
+                        android:paddingEnd="30dp"
+                        android:paddingStart="30dp"
+                        android:paddingTop="2dp"
+                        android:background="#8c030e"
+                        android:text="@string/SkillCard"
+                        app:layout_constraintStart_toEndOf="@+id/tableMaterialDropTitle"
+                        app:layout_constraintTop_toBottomOf="@+id/tableTxtEXP" />
+
+                    <TextView
+                        android:id="@+id/tableTxtMaterialDrop"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:gravity="center"
+                        android:paddingBottom="4dp"
+                        android:paddingEnd="4dp"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:background="#000000"
+                        android:text="Silk Yarn"
+                        app:layout_constraintEnd_toStartOf="@+id/tableSkillCardTitle"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tableMaterialDropTitle" />
+
+                    <TextView
+                        android:id="@+id/tableTxtSkillCard"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:gravity="center"
+                        android:paddingBottom="4dp"
+                        android:paddingEnd="4dp"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:background="#000000"
+                        android:text="Pulinpa"
+                        app:layout_constraintEnd_toEndOf="@+id/tableSkillCardTitle"
+                        app:layout_constraintStart_toStartOf="@+id/tableSkillCardTitle"
+                        app:layout_constraintTop_toBottomOf="@+id/tableSkillCardTitle" />
+
+                    <TextView
+                        android:id="@+id/tableListOfSkillsTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="2dp"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="1dp"
+                        android:gravity="center"
+                        android:paddingBottom="4dp"
+                        android:paddingEnd="4dp"
+                        android:paddingStart="4dp"
+                        android:paddingTop="4dp"
+                        android:background="#8c030e"
+                        android:text="@string/ListOfSkills"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tableTxtMaterialDrop" />
+
+                    <TextView
+                        android:id="@+id/tableSkllTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:gravity="center"
+                        android:paddingBottom="4dp"
+                        android:paddingEnd="10dp"
+                        android:paddingStart="10dp"
+                        android:paddingTop="4dp"
+                        android:background="#000000"
+                        android:text="@string/Skill"
+                        app:layout_constraintStart_toStartOf="@+id/tableListOfSkillsTitle"
+                        app:layout_constraintTop_toBottomOf="@+id/tableListOfSkillsTitle" />
+
+                    <TextView
+                        android:id="@+id/tableEffectTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="2dp"
+                        android:layout_marginStart="2dp"
+                        android:gravity="center"
+                        android:paddingBottom="4dp"
+                        android:paddingEnd="10dp"
+                        android:paddingStart="10dp"
+                        android:paddingTop="4dp"
+                        android:background="#000000"
+                        android:text="@string/Effect"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/tableSkllTitle"
+                        app:layout_constraintTop_toBottomOf="@+id/tableListOfSkillsTitle" />
+                </android.support.constraint.ConstraintLayout>
+            </android.support.constraint.ConstraintLayout>
         </android.support.constraint.ConstraintLayout>
-
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/constraintLayout3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/informationsPersonaTitle">
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
-        </android.support.constraint.ConstraintLayout>
-    </android.support.constraint.ConstraintLayout>
+    </ScrollView>
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"

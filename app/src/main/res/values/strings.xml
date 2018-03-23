@@ -56,6 +56,35 @@
     <string name="statsPersonaAgilityTitle">Agility</string>
     <string name="statsPersonaLuckTitle">Luck</string>
 
+    <string name="Personality">Personality</string>
+    <string name="Weakness">Weakness</string>
+    <string name="Resistance">Resistance</string>
+    <string name="Arcana">Arcana</string>
+
     <string name="informationsPersonaTitle">Informations</string>
+    <string name="Level">Level</string>
+    <string name="HP">HP</string>
+    <string name="SP">SP</string>
+    <string name="Type">Type</string>
+    <string name="Phys">Phys</string>
+    <string name="Gun">Gun</string>
+    <string name="Fire">Fire</string>
+    <string name="Ice">Ice</string>
+    <string name="Elec">Elec</string>
+    <string name="Wind">Wind</string>
+    <string name="Psy">Psy</string>
+    <string name="Nucl">Nucl</string>
+    <string name="Bless">Bless</string>
+    <string name="Curse">Curse</string>
+    <string name="Almi">Almi</string>
+    <string name="EXP">EXP</string>
+    <string name="Yen">Yen</string>
+    <string name="MaterialDrop">Material Drop</string>
+    <string name="SkillCard">Skill Card</string>
+    <string name="ListOfSkills">List of Skills</string>
+    <string name="Effect">Effect</string>
+    <string name="Skill">Skill</string>
+
+
 
 </resources>
