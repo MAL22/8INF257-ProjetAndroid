@@ -1,38 +1,34 @@
 package uqac8inf257.wikipersona.helper;
 
-import android.content.Context;
 import android.database.Cursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import java.io.IOException;
 import java.util.Vector;
 
-import uqac8inf257.wikipersona.model.Arcana;
+import uqac8inf257.wikipersona.model.DamageType;
 
 /**
- * Created by mimil on 2018-03-09.
+ * Created by mimil on 2018-03-26.
  */
 
-public class ArcanaDB {
+public class ResistancesDB {
+    SQLiteDatabase db;
 
-    private SQLiteDatabase myDatabase;
-
-    public ArcanaDB(SQLiteDatabase myDatabase) {
-
+    public ResistancesDB(SQLiteDatabase db) {
+        this.db = db;
     }
 
-    public Vector<Arcana> executeQuery(String query, String params[]) {
+    private Vector<DamageType> executeQuery(String query, String params[]) {
         Cursor cursor;
 
         if (params == null || params.length == 0)
-            cursor = myDatabase.rawQuery(query, null);
+            cursor = db.rawQuery(query, null);
         else
-            cursor = myDatabase.rawQuery(query, params);
+            cursor = db.rawQuery(query, params);
 
         // Initialisation des structures requises pour l'obtention des données
-        Vector<Arcana> lst = new Vector<>();
+        Vector<DamageType> lst = new Vector<>();
         String cols[] = cursor.getColumnNames();
 
         Log.v("wiki", cursor.getCount() + " éléments.");
@@ -45,15 +41,22 @@ public class ArcanaDB {
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             do {
-                Arcana arcana = new Arcana(
+                DamageType dmgType = new DamageType(
                         cursor.getInt(0),
                         cursor.getString(1)
                 );
 
-                lst.add(arcana);
+                lst.add(dmgType);
             } while (cursor.moveToNext());
             cursor.close();
         }
         return lst;
+    }
+
+    public Vector<DamageType> byShadowID(int id) {
+        String query = "SELECT dt.ID, dt.Name \n" +
+                "FROM DamageTypes as 'dt', Resistances as 'r' \n" +
+                "WHERE r.ID_Shadow = ? and dt.ID = r.ID_DamageType";
+        return executeQuery(query, new String[]{String.valueOf(id)});
     }
 }

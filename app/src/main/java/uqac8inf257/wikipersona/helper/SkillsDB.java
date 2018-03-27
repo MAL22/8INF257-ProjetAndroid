@@ -3,6 +3,7 @@ package uqac8inf257.wikipersona.helper;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import java.io.IOException;
@@ -15,28 +16,21 @@ import uqac8inf257.wikipersona.model.Skill;
  * Created by mimil on 2018-03-09.
  */
 
-public class SkillsDB extends DatabaseHelper {
-    public SkillsDB(Context context) {
-        super(context);
+public class SkillsDB {
+
+    private SQLiteDatabase myDatabase;
+
+    public SkillsDB(SQLiteDatabase myDatabase) {
+
     }
 
-    @Override
     protected Vector<Skill> executeQuery(String query, String params[]) {
-        try {
-            super.createDatabase();
-            super.openDatabase();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        } catch (SQLException sqle) {
-            sqle.printStackTrace();
-        }
-
         Cursor cursor;
 
         if (params == null || params.length == 0)
-            cursor = super.myDatabase.rawQuery(query, null);
+            cursor = myDatabase.rawQuery(query, null);
         else
-            cursor = super.myDatabase.rawQuery(query, params);
+            cursor = myDatabase.rawQuery(query, params);
 
         // Initialisation des structures requises pour l'obtention des données
         Vector<Skill> lst = new Vector<>();
@@ -61,7 +55,6 @@ public class SkillsDB extends DatabaseHelper {
                 lst.add(skill);
             } while (cursor.moveToNext());
             cursor.close();
-            super.closeDatabase();
         }
         return lst;
     }

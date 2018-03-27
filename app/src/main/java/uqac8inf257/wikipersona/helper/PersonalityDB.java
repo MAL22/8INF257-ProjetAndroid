@@ -3,6 +3,7 @@ package uqac8inf257.wikipersona.helper;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import java.io.IOException;
@@ -14,28 +15,21 @@ import uqac8inf257.wikipersona.model.Personality;
  * Created by mimil on 2018-03-09.
  */
 
-public class PersonalityDB extends DatabaseHelper {
-    public PersonalityDB(Context context) {
-        super(context);
+public class PersonalityDB {
+
+    private SQLiteDatabase myDatabase;
+
+    public PersonalityDB(SQLiteDatabase myDatabase) {
+
     }
 
-    @Override
     protected Vector<Personality> executeQuery(String query, String params[]) {
-        try {
-            super.createDatabase();
-            super.openDatabase();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        } catch (SQLException sqle) {
-            sqle.printStackTrace();
-        }
-
         Cursor cursor;
 
         if (params == null || params.length == 0)
-            cursor = super.myDatabase.rawQuery(query, null);
+            cursor = myDatabase.rawQuery(query, null);
         else
-            cursor = super.myDatabase.rawQuery(query, params);
+            cursor = myDatabase.rawQuery(query, params);
 
         Vector<Personality> lst = new Vector<>();
         String cols[] = cursor.getColumnNames();
@@ -58,7 +52,6 @@ public class PersonalityDB extends DatabaseHelper {
                 lst.add(personality);
             } while (cursor.moveToNext());
             cursor.close();
-            super.closeDatabase();
         }
         return lst;
     }

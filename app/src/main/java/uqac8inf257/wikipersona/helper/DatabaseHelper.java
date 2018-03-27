@@ -19,14 +19,22 @@ import android.util.Log;
  * Created by mimil on 2018-03-01.
  */
 
-public abstract class DatabaseHelper extends SQLiteOpenHelper {
+public class DatabaseHelper extends SQLiteOpenHelper {
 
-    protected SQLiteDatabase myDatabase;
+    private SQLiteDatabase myDatabase;
     private final Context myContext;
 
     private static final String DATABASE_NAME = "personawiki.db";
     public final static String DATABASE_PATH = "/data/data/uqac8inf257.wikipersona/databases/";
     public static final int DATABASE_VERSION = 1;
+
+    private ShadowDB DB_Shadow;
+    private PersonalityDB DB_Personality;
+    private ArcanaDB DB_Arcana;
+    private SkillsDB DB_Skills;
+    private DamageTypeDB DB_DamageType;
+    private WeaknessesDB DB_Weaknesses;
+    private ResistancesDB DB_Resistances;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -109,6 +117,14 @@ public abstract class DatabaseHelper extends SQLiteOpenHelper {
     public void openDatabase() throws SQLException {
         String myPath = DATABASE_PATH + DATABASE_NAME;
         myDatabase = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READWRITE);
+
+        DB_DamageType = new DamageTypeDB(myDatabase);
+        DB_Resistances = new ResistancesDB(myDatabase);
+        DB_Weaknesses = new WeaknessesDB(myDatabase);
+        DB_Shadow = new ShadowDB(myDatabase, DB_Weaknesses, DB_Resistances);
+        DB_Personality = new PersonalityDB(myDatabase);
+        DB_Arcana = new ArcanaDB(myDatabase);
+        DB_Skills = new SkillsDB(myDatabase);
     }
 
     public synchronized void closeDatabase() throws SQLiteException {
@@ -129,5 +145,21 @@ public abstract class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    protected abstract Vector executeQuery(String query, String params[]);
+    public ShadowDB getDBShadow() {
+        return DB_Shadow;
+    }
+
+    public PersonalityDB getDBPersonality() {
+        return DB_Personality;
+    }
+
+    public ArcanaDB getDBArcana() {
+        return DB_Arcana;
+    }
+
+    public SkillsDB getDBSkills() {
+        return DB_Skills;
+    }
+
+    // protected abstract Vector executeQuery(String query, String params[]);
 }

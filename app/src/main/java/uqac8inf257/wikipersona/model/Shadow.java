@@ -1,5 +1,7 @@
 package uqac8inf257.wikipersona.model;
 
+import java.util.Vector;
+
 /**
  * Created by mimil on 2018-03-08.
  */
@@ -13,8 +15,20 @@ public class Shadow {
     private Arcana arcana;
     private Personality personality;
     private Statistics stats;
+    private Vector<DamageType> weaknesses;
+    private Vector<DamageType> resistances;
 
-    public Shadow(int id, String fakeName, String realName, String history, Arcana arcana, Personality personality, Statistics stats) {
+    public Shadow(
+            int id,
+            String fakeName,
+            String realName,
+            String history,
+            Arcana arcana,
+            Personality personality,
+            Statistics stats,
+            Vector<DamageType> weaknesses,
+            Vector<DamageType> resistances
+    ) {
         this.id = id;
         this.realName = realName;
         this.fakeName = fakeName;
@@ -22,6 +36,8 @@ public class Shadow {
         this.arcana = arcana;
         this.personality = personality;
         this.stats = stats;
+        this.weaknesses = weaknesses;
+        this.resistances = resistances;
     }
 
     public int getId() {
@@ -51,4 +67,13 @@ public class Shadow {
     public Statistics getStats() {
         return stats;
     }
+
+    public Vector<DamageType> getWeaknesses() {
+        return weaknesses;
+    }
+
+    public Vector<DamageType> getResistances() {
+        return resistances;
+    }
+
 }

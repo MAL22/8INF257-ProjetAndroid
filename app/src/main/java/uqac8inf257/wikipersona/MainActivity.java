@@ -13,8 +13,7 @@ import android.database.SQLException;
 import java.util.Vector;
 
 import uqac8inf257.wikipersona.helper.DatabaseHelper;
-import uqac8inf257.wikipersona.helper.SelectShadow;
-import uqac8inf257.wikipersona.helper.SelectShadows;
+import uqac8inf257.wikipersona.model.DamageType;
 import uqac8inf257.wikipersona.model.Shadow;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,19 +22,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        /*try {
-            db.createDatabase();
-        } catch (IOException e) {
-            //throw new Error("Unable create db");
-            e.printStackTrace();
-        }
-
-        try {
-            db.openDatabase();
-        } catch (SQLException sqle) {
-            //throw sqle;
-            sqle.printStackTrace();
-        }*/
     }
 
     @Override
@@ -51,27 +37,50 @@ public class MainActivity extends AppCompatActivity {
     public void testClick(View v) {
         Log.v("wiki", "CLICK!");
 
-        //SelectShadows db = new SelectShadows(this);
-        SelectShadow db = new SelectShadow(this);
-        Vector<Shadow> result = db.executeQuery(1);
+        DatabaseHelper db = new DatabaseHelper(this);
+
+        try {
+            db.createDatabase();
+            db.openDatabase();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+        }
+
+        Vector<Shadow> result = db.getDBShadow().byArcana("Fool");
 
         StringBuilder stuff = new StringBuilder();
 
         for (int i = 0; i < result.size(); i++) {
-            Shadow inner = result.get(i);
-            stuff.append(inner.getId());
-            stuff.append(inner.getFakeName());
-            stuff.append(inner.getRealName());
-            stuff.append(inner.getHistory());
-            stuff.append(inner.getArcana().getName());
-            stuff.append(inner.getPersonality().getName());
-            stuff.append(inner.getStats().getStrength());
-            stuff.append(inner.getStats().getMagic());
-            stuff.append(inner.getStats().getLuck());
-            stuff.append(inner.getStats().getAgility());
-            stuff.append(inner.getStats().getEndurance());
+            Shadow sh = result.get(i);
+            stuff.append(sh.getId());
+            stuff.append(sh.getFakeName());
+            stuff.append(sh.getRealName());
+            stuff.append(sh.getHistory());
+            stuff.append(sh.getArcana().getName());
+            stuff.append(sh.getPersonality().getName());
+            stuff.append(sh.getStats().getStrength());
+            stuff.append(sh.getStats().getMagic());
+            stuff.append(sh.getStats().getLuck());
+            stuff.append(sh.getStats().getAgility());
+            stuff.append(sh.getStats().getEndurance());
+
+            Vector<DamageType> resist = sh.getResistances();
+            Vector<DamageType> weak = sh.getWeaknesses();
+            for (int j = 0; j < resist.size(); j++) {
+                DamageType dmgType = resist.get(j);
+                stuff.append(dmgType.getId());
+                stuff.append(dmgType.getName());
+            }
+            for (int j = 0; j < weak.size(); j++) {
+                DamageType dmgType = weak.get(j);
+                stuff.append(dmgType.getId());
+                stuff.append(dmgType.getName());
+            }
         }
 
+        db.closeDatabase();
         Log.v("wiki", stuff.toString());
 
         Toast toast = Toast.makeText(getApplicationContext(), stuff, Toast.LENGTH_LONG);
