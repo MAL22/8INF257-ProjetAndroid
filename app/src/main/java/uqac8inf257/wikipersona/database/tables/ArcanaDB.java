@@ -1,37 +1,35 @@
-package uqac8inf257.wikipersona.helper;
+package uqac8inf257.wikipersona.database.tables;
 
-import android.content.Context;
 import android.database.Cursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import java.io.IOException;
 import java.util.Vector;
 
-import uqac8inf257.wikipersona.model.Personality;
+import uqac8inf257.wikipersona.data.Arcana;
 
 /**
  * Created by mimil on 2018-03-09.
  */
 
-public class PersonalityDB {
+public class ArcanaDB {
 
-    private SQLiteDatabase myDatabase;
+    private SQLiteDatabase db;
 
-    public PersonalityDB(SQLiteDatabase myDatabase) {
-
+    public ArcanaDB(SQLiteDatabase db) {
+        this.db = db;
     }
 
-    protected Vector<Personality> executeQuery(String query, String params[]) {
+    private Vector<Arcana> executeQuery(String query, String params[]) {
         Cursor cursor;
 
         if (params == null || params.length == 0)
-            cursor = myDatabase.rawQuery(query, null);
+            cursor = db.rawQuery(query, null);
         else
-            cursor = myDatabase.rawQuery(query, params);
+            cursor = db.rawQuery(query, params);
 
-        Vector<Personality> lst = new Vector<>();
+        // Initialisation des structures requises pour l'obtention des données
+        Vector<Arcana> lst = new Vector<>();
         String cols[] = cursor.getColumnNames();
 
         Log.v("wiki", cursor.getCount() + " éléments.");
@@ -44,12 +42,12 @@ public class PersonalityDB {
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             do {
-                Personality personality = new Personality(
+                Arcana arcana = new Arcana(
                         cursor.getInt(0),
                         cursor.getString(1)
                 );
 
-                lst.add(personality);
+                lst.add(arcana);
             } while (cursor.moveToNext());
             cursor.close();
         }

@@ -1,4 +1,4 @@
-package uqac8inf257.wikipersona.helper;
+package uqac8inf257.wikipersona.database.tables;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -6,21 +6,21 @@ import android.util.Log;
 
 import java.util.Vector;
 
-import uqac8inf257.wikipersona.model.DamageType;
+import uqac8inf257.wikipersona.data.Personality;
 
 /**
- * Created by mimil on 2018-03-26.
+ * Created by mimil on 2018-03-09.
  */
 
-public class WeaknessesDB {
+public class PersonalityDB {
 
-    SQLiteDatabase db;
+    private SQLiteDatabase db;
 
-    public WeaknessesDB(SQLiteDatabase db) {
+    public PersonalityDB(SQLiteDatabase db) {
         this.db = db;
     }
 
-    private Vector<DamageType> executeQuery(String query, String params[]) {
+    private Vector<Personality> executeQuery(String query, String params[]) {
         Cursor cursor;
 
         if (params == null || params.length == 0)
@@ -28,8 +28,7 @@ public class WeaknessesDB {
         else
             cursor = db.rawQuery(query, params);
 
-        // Initialisation des structures requises pour l'obtention des données
-        Vector<DamageType> lst = new Vector<>();
+        Vector<Personality> lst = new Vector<>();
         String cols[] = cursor.getColumnNames();
 
         Log.v("wiki", cursor.getCount() + " éléments.");
@@ -42,22 +41,15 @@ public class WeaknessesDB {
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             do {
-                DamageType dmgType = new DamageType(
+                Personality personality = new Personality(
                         cursor.getInt(0),
                         cursor.getString(1)
                 );
 
-                lst.add(dmgType);
+                lst.add(personality);
             } while (cursor.moveToNext());
             cursor.close();
         }
         return lst;
-    }
-
-    public Vector<DamageType> byShadowID(int id) {
-        String query = "SELECT dt.ID, dt.Name \n" +
-                "FROM DamageTypes as 'dt', Weaknesses as 'w' \n" +
-                "WHERE w.ID_Shadow = ? and dt.ID = w.ID_DamageType";
-        return executeQuery(query, new String[]{String.valueOf(id)});
     }
 }

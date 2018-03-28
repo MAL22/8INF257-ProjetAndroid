@@ -1,19 +1,25 @@
-package uqac8inf257.wikipersona.helper;
+package uqac8inf257.wikipersona.database;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.Vector;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+
+import uqac8inf257.wikipersona.database.tables.ArcanaDB;
+import uqac8inf257.wikipersona.database.tables.DamageTypeDB;
+import uqac8inf257.wikipersona.database.tables.PersonalityDB;
+import uqac8inf257.wikipersona.database.tables.ResistancesDB;
+import uqac8inf257.wikipersona.database.tables.ShadowDB;
+import uqac8inf257.wikipersona.database.tables.SkillsDB;
+import uqac8inf257.wikipersona.database.tables.WeaknessesDB;
 
 /**
  * Created by mimil on 2018-03-01.
@@ -121,10 +127,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         DB_DamageType = new DamageTypeDB(myDatabase);
         DB_Resistances = new ResistancesDB(myDatabase);
         DB_Weaknesses = new WeaknessesDB(myDatabase);
-        DB_Shadow = new ShadowDB(myDatabase, DB_Weaknesses, DB_Resistances);
+        DB_Skills = new SkillsDB(myDatabase);
         DB_Personality = new PersonalityDB(myDatabase);
         DB_Arcana = new ArcanaDB(myDatabase);
-        DB_Skills = new SkillsDB(myDatabase);
+        DB_Shadow = new ShadowDB(myDatabase, DB_Weaknesses, DB_Resistances, DB_Skills);
     }
 
     public synchronized void closeDatabase() throws SQLiteException {

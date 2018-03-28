@@ -1,4 +1,4 @@
-package uqac8inf257.wikipersona.model;
+package uqac8inf257.wikipersona.data;
 
 /**
  * Created by mimil on 2018-03-10.

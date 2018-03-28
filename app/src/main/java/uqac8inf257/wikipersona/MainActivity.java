@@ -12,9 +12,10 @@ import android.database.SQLException;
 
 import java.util.Vector;
 
-import uqac8inf257.wikipersona.helper.DatabaseHelper;
-import uqac8inf257.wikipersona.model.DamageType;
-import uqac8inf257.wikipersona.model.Shadow;
+import uqac8inf257.wikipersona.data.Skill;
+import uqac8inf257.wikipersona.database.DatabaseHelper;
+import uqac8inf257.wikipersona.data.DamageType;
+import uqac8inf257.wikipersona.data.Shadow;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,6 +33,19 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+    }
+
+    public void btnRandom_onClick(View v) {
+        Log.v("wiki", "btnRandom_onClick");
+
+        switch (v.getId()) {
+            case R.id.btnRandom:
+
+                break;
+
+            default:
+                break;
+        }
     }
 
     public void testClick(View v) {
@@ -66,17 +80,24 @@ public class MainActivity extends AppCompatActivity {
             stuff.append(sh.getStats().getAgility());
             stuff.append(sh.getStats().getEndurance());
 
-            Vector<DamageType> resist = sh.getResistances();
-            Vector<DamageType> weak = sh.getWeaknesses();
-            for (int j = 0; j < resist.size(); j++) {
-                DamageType dmgType = resist.get(j);
-                stuff.append(dmgType.getId());
-                stuff.append(dmgType.getName());
+            Vector<Skill> skills = sh.getSkills();
+            Vector<DamageType> resistances = sh.getResistances();
+            Vector<DamageType> weaknesses = sh.getWeaknesses();
+            for (int j = 0; j < skills.size(); j++) {
+                Skill skill = skills.get(j);
+                stuff.append(skill.getId());
+                stuff.append(skill.getName());
+                stuff.append(skill.getEffect());
             }
-            for (int j = 0; j < weak.size(); j++) {
-                DamageType dmgType = weak.get(j);
-                stuff.append(dmgType.getId());
-                stuff.append(dmgType.getName());
+            for (int j = 0; j < resistances.size(); j++) {
+                DamageType resistance = resistances.get(j);
+                stuff.append(resistance.getId());
+                stuff.append(resistance.getName());
+            }
+            for (int j = 0; j < weaknesses.size(); j++) {
+                DamageType weakness = weaknesses.get(j);
+                stuff.append(weakness.getId());
+                stuff.append(weakness.getName());
             }
         }
 

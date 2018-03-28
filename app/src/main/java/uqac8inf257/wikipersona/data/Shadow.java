@@ -1,4 +1,4 @@
-package uqac8inf257.wikipersona.model;
+package uqac8inf257.wikipersona.data;
 
 import java.util.Vector;
 
@@ -15,6 +15,7 @@ public class Shadow {
     private Arcana arcana;
     private Personality personality;
     private Statistics stats;
+    private Vector<Skill> skills;
     private Vector<DamageType> weaknesses;
     private Vector<DamageType> resistances;
 
@@ -26,6 +27,7 @@ public class Shadow {
             Arcana arcana,
             Personality personality,
             Statistics stats,
+            Vector<Skill> skills,
             Vector<DamageType> weaknesses,
             Vector<DamageType> resistances
     ) {
@@ -36,6 +38,7 @@ public class Shadow {
         this.arcana = arcana;
         this.personality = personality;
         this.stats = stats;
+        this.skills = skills;
         this.weaknesses = weaknesses;
         this.resistances = resistances;
     }
@@ -66,6 +69,10 @@ public class Shadow {
 
     public Statistics getStats() {
         return stats;
+    }
+
+    public Vector<Skill> getSkills() {
+        return skills;
     }
 
     public Vector<DamageType> getWeaknesses() {

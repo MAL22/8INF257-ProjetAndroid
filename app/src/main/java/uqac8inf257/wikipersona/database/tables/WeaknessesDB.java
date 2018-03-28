@@ -1,4 +1,4 @@
-package uqac8inf257.wikipersona.helper;
+package uqac8inf257.wikipersona.database.tables;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -6,16 +6,17 @@ import android.util.Log;
 
 import java.util.Vector;
 
-import uqac8inf257.wikipersona.model.DamageType;
+import uqac8inf257.wikipersona.data.DamageType;
 
 /**
  * Created by mimil on 2018-03-26.
  */
 
-public class ResistancesDB {
+public class WeaknessesDB {
+
     SQLiteDatabase db;
 
-    public ResistancesDB(SQLiteDatabase db) {
+    public WeaknessesDB(SQLiteDatabase db) {
         this.db = db;
     }
 
@@ -55,8 +56,8 @@ public class ResistancesDB {
 
     public Vector<DamageType> byShadowID(int id) {
         String query = "SELECT dt.ID, dt.Name \n" +
-                "FROM DamageTypes as 'dt', Resistances as 'r' \n" +
-                "WHERE r.ID_Shadow = ? and dt.ID = r.ID_DamageType";
+                "FROM DamageTypes as 'dt', Weaknesses as 'w' \n" +
+                "WHERE w.ID_Shadow = ? and dt.ID = w.ID_DamageType";
         return executeQuery(query, new String[]{String.valueOf(id)});
     }
 }

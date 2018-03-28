@@ -1,39 +1,36 @@
-package uqac8inf257.wikipersona.helper;
+package uqac8inf257.wikipersona.database.tables;
 
-import android.content.Context;
 import android.database.Cursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import java.io.IOException;
 import java.util.Vector;
 
-import uqac8inf257.wikipersona.model.Arcana;
-import uqac8inf257.wikipersona.model.Skill;
+import uqac8inf257.wikipersona.data.DamageType;
+
 
 /**
- * Created by mimil on 2018-03-09.
+ * Created by mimil on 2018-03-26.
  */
 
-public class SkillsDB {
+public class DamageTypeDB {
 
-    private SQLiteDatabase myDatabase;
+    SQLiteDatabase db;
 
-    public SkillsDB(SQLiteDatabase myDatabase) {
-
+    public DamageTypeDB(SQLiteDatabase db) {
+        this.db = db;
     }
 
-    protected Vector<Skill> executeQuery(String query, String params[]) {
+    private Vector<DamageType> executeQuery(String query, String params[]) {
         Cursor cursor;
 
         if (params == null || params.length == 0)
-            cursor = myDatabase.rawQuery(query, null);
+            cursor = db.rawQuery(query, null);
         else
-            cursor = myDatabase.rawQuery(query, params);
+            cursor = db.rawQuery(query, params);
 
         // Initialisation des structures requises pour l'obtention des données
-        Vector<Skill> lst = new Vector<>();
+        Vector<DamageType> lst = new Vector<>();
         String cols[] = cursor.getColumnNames();
 
         Log.v("wiki", cursor.getCount() + " éléments.");
@@ -46,16 +43,27 @@ public class SkillsDB {
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             do {
-                Skill skill = new Skill(
+                DamageType dmgType = new DamageType(
                         cursor.getInt(0),
-                        cursor.getString(1),
-                        cursor.getString(2)
+                        cursor.getString(1)
                 );
 
-                lst.add(skill);
+                lst.add(dmgType);
             } while (cursor.moveToNext());
             cursor.close();
         }
         return lst;
+    }
+
+    public Vector<DamageType> getAll() {
+        return null;
+    }
+
+    public Vector<DamageType> byID(int id) {
+        return null;
+    }
+
+    public Vector<DamageType> byName(String name) {
+        return null;
     }
 }

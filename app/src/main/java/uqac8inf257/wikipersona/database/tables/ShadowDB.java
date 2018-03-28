@@ -1,4 +1,4 @@
-package uqac8inf257.wikipersona.helper;
+package uqac8inf257.wikipersona.database.tables;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -6,11 +6,10 @@ import android.util.Log;
 
 import java.util.Vector;
 
-import uqac8inf257.wikipersona.model.Arcana;
-import uqac8inf257.wikipersona.model.DamageType;
-import uqac8inf257.wikipersona.model.Personality;
-import uqac8inf257.wikipersona.model.Shadow;
-import uqac8inf257.wikipersona.model.Statistics;
+import uqac8inf257.wikipersona.data.Arcana;
+import uqac8inf257.wikipersona.data.Personality;
+import uqac8inf257.wikipersona.data.Shadow;
+import uqac8inf257.wikipersona.data.Statistics;
 
 /**
  * Created by mimil on 2018-03-09.
@@ -20,12 +19,14 @@ public class ShadowDB {
 
     private WeaknessesDB DB_Weaknesses;
     private ResistancesDB DB_Resistances;
+    private SkillsDB DB_Skills;
     private SQLiteDatabase db;
 
-    public ShadowDB(SQLiteDatabase db, WeaknessesDB weaknessesDB, ResistancesDB resistancesDB) {
+    public ShadowDB(SQLiteDatabase db, WeaknessesDB weaknessesDB, ResistancesDB resistancesDB, SkillsDB skillsDB) {
         this.db = db;
         this.DB_Weaknesses = weaknessesDB;
         this.DB_Resistances = resistancesDB;
+        this.DB_Skills = skillsDB;
     }
 
     private Vector<Shadow> executeQuery(String query, String params[]) {
@@ -67,6 +68,7 @@ public class ShadowDB {
                                 cursor.getInt(9),
                                 cursor.getInt(10),
                                 cursor.getInt(11)),
+                        DB_Skills.byShadowID(cursor.getInt(0)),
                         DB_Weaknesses.byShadowID(cursor.getInt(0)),
                         DB_Resistances.byShadowID(cursor.getInt(0))
                 );

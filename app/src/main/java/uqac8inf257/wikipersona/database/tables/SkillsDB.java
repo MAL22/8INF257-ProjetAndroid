@@ -1,30 +1,27 @@
-package uqac8inf257.wikipersona.helper;
+package uqac8inf257.wikipersona.database.tables;
 
 import android.database.Cursor;
+
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import java.util.Vector;
 
-import uqac8inf257.wikipersona.model.Arcana;
-import uqac8inf257.wikipersona.model.DamageType;
-import uqac8inf257.wikipersona.model.Personality;
-import uqac8inf257.wikipersona.model.Shadow;
-import uqac8inf257.wikipersona.model.Statistics;
+import uqac8inf257.wikipersona.data.Skill;
 
 /**
- * Created by mimil on 2018-03-26.
+ * Created by mimil on 2018-03-09.
  */
 
-public class DamageTypeDB {
+public class SkillsDB {
 
-    SQLiteDatabase db;
+    private SQLiteDatabase db;
 
-    public DamageTypeDB(SQLiteDatabase db) {
+    public SkillsDB(SQLiteDatabase db) {
         this.db = db;
     }
 
-    private Vector<DamageType> executeQuery(String query, String params[]) {
+    private Vector<Skill> executeQuery(String query, String params[]) {
         Cursor cursor;
 
         if (params == null || params.length == 0)
@@ -33,7 +30,7 @@ public class DamageTypeDB {
             cursor = db.rawQuery(query, params);
 
         // Initialisation des structures requises pour l'obtention des données
-        Vector<DamageType> lst = new Vector<>();
+        Vector<Skill> lst = new Vector<>();
         String cols[] = cursor.getColumnNames();
 
         Log.v("wiki", cursor.getCount() + " éléments.");
@@ -46,27 +43,23 @@ public class DamageTypeDB {
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             do {
-                DamageType dmgType = new DamageType(
+                Skill skill = new Skill(
                         cursor.getInt(0),
-                        cursor.getString(1)
+                        cursor.getString(1),
+                        cursor.getString(2)
                 );
 
-                lst.add(dmgType);
+                lst.add(skill);
             } while (cursor.moveToNext());
             cursor.close();
         }
         return lst;
     }
 
-    public Vector<DamageType> getAll() {
-        return null;
-    }
-
-    public Vector<DamageType> byID(int id) {
-        return null;
-    }
-
-    public Vector<DamageType> byName(String name) {
-        return null;
+    public Vector<Skill> byShadowID(int id) {
+        String query = "SELECT sk.ID, sk.Name, sk.Effect \n" +
+                "FROM Skills as 'sk' \n" +
+                "WHERE sk.ID_Shadow = ?";
+        return executeQuery(query, new String[]{String.valueOf(id)});
     }
 }
