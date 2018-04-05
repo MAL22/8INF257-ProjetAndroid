@@ -134,6 +134,16 @@ public class ShadowDB {
                 "WHERE sh.Arcana_ID = a.ID and sh.Personality_ID = ?";
         return executeQuery(query, new String[]{String.valueOf(id)});
     }
+
+    public Shadow getRandom() {
+        String query = "SELECT sh.id, sh.FakeName as `Fake name`,sh.RealName as `Real name`,sh.History as `History`,a.id,a.Name as `Arcana`,p.id,p.Name AS `Personality`,st.Strength as `Strength`,st.Magic as `Magic`,st.Endurance as `Endurance`,st.Agility as `Agility`,st.Luck as `Luck`\n" +
+                "FROM Shadows as 'sh',Arcana as 'a',Personalities as 'p',Stats as 'st'\n" +
+                "WHERE sh.Arcana_ID = a.ID and sh.Personality_ID = p.ID\n" +
+                "ORDER BY RANDOM()\n" +
+                "LIMIT 1";
+
+        return executeQuery(query, null).firstElement();
+    }
 /*
     public Vector<DamageType> getWeaknesses(int id) {
         return DB_Weaknesses.byShadowID(id);
