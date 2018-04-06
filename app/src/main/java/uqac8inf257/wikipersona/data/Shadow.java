@@ -19,6 +19,14 @@ public class Shadow {
     private Vector<DamageType> weaknesses;
     private Vector<DamageType> resistances;
 
+    private int level;
+    private int hp;
+    private int sp;
+    private String drop;
+    private String skillCard;
+    private int exp;
+    private int yen;
+
     public Shadow(
             int id,
             String fakeName,
@@ -29,7 +37,14 @@ public class Shadow {
             Statistics stats,
             Vector<Skill> skills,
             Vector<DamageType> weaknesses,
-            Vector<DamageType> resistances
+            Vector<DamageType> resistances,
+            int level,
+            int hp,
+            int sp,
+            String drop,
+            String skillCard,
+            int exp,
+            int yen
     ) {
         this.id = id;
         this.realName = realName;
@@ -41,6 +56,13 @@ public class Shadow {
         this.skills = skills;
         this.weaknesses = weaknesses;
         this.resistances = resistances;
+        this.level = level;
+        this.hp = hp;
+        this.sp = sp;
+        this.drop = drop;
+        this.skillCard = skillCard;
+        this.exp = exp;
+        this.yen = yen;
     }
 
     public int getId() {
@@ -48,39 +70,75 @@ public class Shadow {
     }
 
     public String getFakeName() {
+
         return fakeName;
     }
 
     public String getRealName() {
+
         return realName;
     }
 
     public String getHistory() {
+
         return history;
     }
 
     public Arcana getArcana() {
+
         return arcana;
     }
 
     public Personality getPersonality() {
+
         return personality;
     }
 
     public Statistics getStats() {
+
         return stats;
     }
 
     public Vector<Skill> getSkills() {
+
         return skills;
     }
 
     public Vector<DamageType> getWeaknesses() {
+
         return weaknesses;
     }
 
     public Vector<DamageType> getResistances() {
+
         return resistances;
     }
 
+    public int getLevel() {
+        return level;
+    }
+
+    public int getHp() {
+        return hp;
+    }
+
+    public int getSp() {
+        return sp;
+    }
+
+    public String getDrop() {
+        return drop;
+    }
+
+    public String getSkillCard() {
+        return skillCard;
+    }
+
+    public int getExp() {
+        return exp;
+    }
+
+    public int getYen() {
+        return yen;
+    }
 }

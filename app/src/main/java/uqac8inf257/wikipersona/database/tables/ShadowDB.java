@@ -22,6 +22,33 @@ public class ShadowDB {
     private SkillsDB DB_Skills;
     private SQLiteDatabase db;
 
+    private static String SELECT =
+            "SELECT sh.ID," +
+                    "sh.FakeName," +
+                    "sh.RealName," +
+                    "sh.History," +
+                    "a.ID," +
+                    "a.Name," +
+                    "p.ID," +
+                    "p.Name," +
+                    "sh.Strength," +
+                    "sh.Magic," +
+                    "sh.Endurance," +
+                    "sh.Agility," +
+                    "sh.Luck," +
+                    "sh.EXPLevel," +
+                    "sh.HP," +
+                    "sh.SP," +
+                    "sh.ItemDrop," +
+                    "sh.SkillCard," +
+                    "sh.EXP," +
+                    "sh.Yen";
+
+    private static String FROM =
+            "\nFROM Shadows as 'sh'," +
+                    "Arcana as 'a'," +
+                    "Personalities as 'p'";
+
     public ShadowDB(SQLiteDatabase db, WeaknessesDB weaknessesDB, ResistancesDB resistancesDB, SkillsDB skillsDB) {
         this.db = db;
         this.DB_Weaknesses = weaknessesDB;
@@ -63,14 +90,22 @@ public class ShadowDB {
                                 cursor.getInt(6),
                                 cursor.getString(7)),
                         new Statistics(
-                                cursor.getInt(7),
                                 cursor.getInt(8),
                                 cursor.getInt(9),
                                 cursor.getInt(10),
-                                cursor.getInt(11)),
+                                cursor.getInt(11),
+                                cursor.getInt(12)),
                         DB_Skills.byShadowID(cursor.getInt(0)),
                         DB_Weaknesses.byShadowID(cursor.getInt(0)),
-                        DB_Resistances.byShadowID(cursor.getInt(0))
+                        DB_Resistances.byShadowID(cursor.getInt(0)),
+                        cursor.getInt(13),
+                        cursor.getInt(14),
+                        cursor.getInt(15),
+                        cursor.getString(16),
+                        cursor.getString(17),
+                        cursor.getInt(18),
+                        cursor.getInt(19)
+
                 );
                 lst.add(shadow);
             } while (cursor.moveToNext());
@@ -80,76 +115,67 @@ public class ShadowDB {
     }
 
     public Vector<Shadow> getAll() {
-        String query = "SELECT sh.id as `ID`, sh.FakeName as `Fake name`,sh.RealName as `Real name`,sh.History as `History`,a.id,a.Name as `Arcana`,p.id,p.Name AS `Personality`,sh.Strength as `Strength`,sh.Magic as `Magic`,sh.Endurance as `Endurance`,sh.Agility as `Agility`,sh.Luck as `Luck`\n" +
-                "FROM Shadows AS 'sh',Arcana AS 'a',Personalities AS 'p'\n" +
-                "WHERE sh.Arcana_ID = a.ID and sh.Personality_ID = p.ID";
+        String query = SELECT + FROM +
+                "\nWHERE sh.Arcana_ID = a.ID and sh.Personality_ID = p.ID";
+
         return executeQuery(query, null);
     }
 
     public Vector<Shadow> byID(int id) {
-        String query = "SELECT sh.id as `ID`, sh.FakeName as `Fake name`,sh.RealName as `Real name`,sh.History as `History`,a.id,a.Name as `Arcana`,p.id,p.Name AS `Personality`,sh.Strength as `Strength`,sh.Magic as `Magic`,sh.Endurance as `Endurance`,sh.Agility as `Agility`,sh.Luck as `Luck`\n" +
-                "FROM Shadows AS 'sh',Arcana AS 'a',Personalities AS 'p'\n" +
-                "WHERE sh.Arcana_ID = a.ID and sh.Personality_ID = p.ID and sh.ID = ?";
+        String query = SELECT + FROM +
+                "\nWHERE sh.Arcana_ID = a.ID and sh.Personality_ID = p.ID and sh.ID = ?";
+
         return executeQuery(query, new String[]{String.valueOf(id)});
     }
 
     public Vector<Shadow> byRealName(String name) {
-        String query = "SELECT sh.id as `ID`, sh.FakeName as `Fake name`,sh.RealName as `Real name`,sh.History as `History`,a.id,a.Name as `Arcana`,p.id,p.Name AS `Personality`,sh.Strength as `Strength`,sh.Magic as `Magic`,sh.Endurance as `Endurance`,sh.Agility as `Agility`,sh.Luck as `Luck`\n" +
-                "FROM Shadows AS 'sh',Arcana AS 'a',Personalities AS 'p'\n" +
-                "WHERE sh.Arcana_ID = a.ID and sh.Personality_ID = p.ID and sh.RealName = ?";
+        String query = SELECT + FROM +
+                "\nWHERE sh.Arcana_ID = a.ID and sh.Personality_ID = p.ID and sh.RealName = ?";
+
         return executeQuery(query, new String[]{name});
     }
 
     public Vector<Shadow> byFakeName(String name) {
-        String query = "SELECT sh.id as `ID`, sh.FakeName as `Fake name`,sh.RealName as `Real name`,sh.History as `History`,a.id,a.Name as `Arcana`,p.id,p.Name AS `Personality`,sh.Strength as `Strength`,sh.Magic as `Magic`,sh.Endurance as `Endurance`,sh.Agility as `Agility`,sh.Luck as `Luck`\n" +
-                "FROM Shadows AS 'sh',Arcana AS 'a',Personalities AS 'p'\n" +
-                "WHERE sh.Arcana_ID = a.ID and sh.Personality_ID = p.ID and sh.FakeName = ?)";
+        String query = SELECT + FROM +
+                "\nWHERE sh.Arcana_ID = a.ID and sh.Personality_ID = p.ID and sh.FakeName = ?";
+
         return executeQuery(query, new String[]{name});
     }
 
     public Vector<Shadow> byArcana(String arcana) {
-        String query = "SELECT sh.id as `ID`, sh.FakeName as `Fake name`,sh.RealName as `Real name`,sh.History as `History`,a.id,a.Name as `Arcana`,p.id,p.Name AS `Personality`,sh.Strength as `Strength`,sh.Magic as `Magic`,sh.Endurance as `Endurance`,sh.Agility as `Agility`,sh.Luck as `Luck`\n" +
-                "FROM Shadows AS 'sh',Arcana AS 'a',Personalities AS 'p'\n" +
-                "WHERE sh.Arcana_ID = a.ID and sh.Personality_ID = p.ID and a.Name = ?";
+        String query = SELECT + FROM +
+                "\nWHERE sh.Arcana_ID = a.ID and sh.Personality_ID = p.ID and a.Name = ?";
+
         return executeQuery(query, new String[]{arcana});
     }
 
     public Vector<Shadow> byPersonality(String personality) {
-        String query = "SELECT sh.id as `ID`, sh.FakeName as `Fake name`,sh.RealName as `Real name`,sh.History as `History`,a.id,a.Name as `Arcana`,p.id,p.Name AS `Personality`,sh.Strength as `Strength`,sh.Magic as `Magic`,sh.Endurance as `Endurance`,sh.Agility as `Agility`,sh.Luck as `Luck`\n" +
-                "FROM Shadows AS 'sh',Arcana AS 'a',Personalities AS 'p'\n" +
-                "WHERE sh.Arcana_ID = a.ID and sh.Personality_ID = p.ID and p.Name = ?";
+        String query = SELECT + FROM +
+                "\nWHERE sh.Arcana_ID = a.ID and sh.Personality_ID = p.ID and p.Name = ?";
+
         return executeQuery(query, new String[]{personality});
     }
 
     public Vector<Shadow> byWeakness(int id) {
-        String query = "SELECT sh.id as `ID`, sh.FakeName as `Fake name`,sh.RealName as `Real name`,sh.History as `History`,a.id,a.Name as `Arcana`,p.id,p.Name AS `Personality`,sh.Strength as `Strength`,sh.Magic as `Magic`,sh.Endurance as `Endurance`,sh.Agility as `Agility`,sh.Luck as `Luck`\n" +
-                "FROM Shadows AS 'sh',Arcana AS 'a',Personalities AS 'p'\n" +
-                "WHERE sh.Arcana_ID = a.ID and sh.Personality_ID = p.ID";
+        String query = SELECT + FROM +
+                "\nWHERE sh.Arcana_ID = a.ID and sh.Personality_ID = p.ID";
+
         return executeQuery(query, new String[]{String.valueOf(id)});
     }
 
     public Vector<Shadow> byResistance(int id) {
-        String query = "SELECT sh.id as `ID`, sh.FakeName as `Fake name`,sh.RealName as `Real name`,sh.History as `History`,a.id,a.Name as `Arcana`,p.id,p.Name AS `Personality`,sh.Strength as `Strength`,sh.Magic as `Magic`,sh.Endurance as `Endurance`,sh.Agility as `Agility`,sh.Luck as `Luck`\n" +
-                "FROM Shadows AS 'sh',Arcana AS 'a',Personalities AS 'p'\n" +
-                "WHERE sh.Arcana_ID = a.ID and sh.Personality_ID = ?";
+        String query = SELECT + FROM +
+                "\nWHERE sh.Arcana_ID = a.ID and sh.Personality_ID = p.ID";
+
         return executeQuery(query, new String[]{String.valueOf(id)});
     }
 
     public Shadow getRandom() {
-        String query = "SELECT sh.id, sh.FakeName as `Fake name`,sh.RealName as `Real name`,sh.History as `History`,a.id,a.Name as `Arcana`,p.id,p.Name AS `Personality`,st.Strength as `Strength`,st.Magic as `Magic`,st.Endurance as `Endurance`,st.Agility as `Agility`,st.Luck as `Luck`\n" +
-                "FROM Shadows as 'sh',Arcana as 'a',Personalities as 'p',Stats as 'st'\n" +
-                "WHERE sh.Arcana_ID = a.ID and sh.Personality_ID = p.ID\n" +
-                "ORDER BY RANDOM()\n" +
-                "LIMIT 1";
+        String query = SELECT + FROM +
+                "\nWHERE sh.Arcana_ID = a.ID and sh.Personality_ID = p.ID" +
+                "\nORDER BY RANDOM()" +
+                "\nLIMIT 1";
 
         return executeQuery(query, null).firstElement();
     }
-/*
-    public Vector<DamageType> getWeaknesses(int id) {
-        return DB_Weaknesses.byShadowID(id);
-    }
-
-    public Vector<DamageType> getResistances(int id) {
-        return DB_Resistances.byShadowID(id);
-    }*/
 }
