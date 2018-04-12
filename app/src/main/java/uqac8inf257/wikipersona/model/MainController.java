@@ -1,11 +1,8 @@
-package uqac8inf257.wikipersona.controller;
+package uqac8inf257.wikipersona.model;
 
 import android.content.Context;
 import android.content.Intent;
 import android.database.SQLException;
-import android.os.Bundle;
-import android.util.Log;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -14,9 +11,8 @@ import java.util.Vector;
 
 import uqac8inf257.wikipersona.MainActivity;
 import uqac8inf257.wikipersona.PersonaActivity;
-import uqac8inf257.wikipersona.data.DamageType;
+import uqac8inf257.wikipersona.SearchList;
 import uqac8inf257.wikipersona.data.Shadow;
-import uqac8inf257.wikipersona.data.Skill;
 import uqac8inf257.wikipersona.database.DatabaseHelper;
 
 /**
@@ -56,6 +52,15 @@ public class MainController {
         Intent intent = new Intent(main, PersonaActivity.class);
         intent.putExtra("shadow", new Gson().toJson(result));
         main.startActivity(intent);
+    }
 
+    public void searchShadows() {
+        openDatabase();
+        Vector<Shadow> result = db.getDBShadow().getAll();
+        closeDatabase();
+
+        Intent intent = new Intent(main, SearchList.class);
+        intent.putExtra("shadows", new Gson().toJson(result));
+        main.startActivity(intent);
     }
 }

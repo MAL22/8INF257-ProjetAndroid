@@ -4,9 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
-import uqac8inf257.wikipersona.controller.MainController;
+import uqac8inf257.wikipersona.model.MainController;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -34,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
         switch (v.getId()) {
             case R.id.btnRandom:
                 Log.v("wiki", "btnRandom_onClick");
-                mainController.displayRandomShadow();
+                //mainController.displayRandomShadow();
+                mainController.searchShadows();
                 break;
 
             default:

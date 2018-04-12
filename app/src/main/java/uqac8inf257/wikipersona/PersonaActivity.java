@@ -1,7 +1,7 @@
 package uqac8inf257.wikipersona;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
 
@@ -15,7 +15,7 @@ import uqac8inf257.wikipersona.data.Shadow;
  * Created by mimil on 2018-04-04.
  */
 
-public class PersonaActivity extends Activity {
+public class PersonaActivity extends AppCompatActivity {
 
     private TextView mNomPersona;
     private TextView mNomShadow;
