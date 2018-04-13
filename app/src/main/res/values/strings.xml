@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">WikiPersona</string>
     <string name="app_fullname">Pocket Persona</string>
+    <string name="nav_menu_title">Menu</string>
+    <string name="nav_menu_editText">Shadow/Persona</string>
+    <string name="nav_menu_searchButton_Text">Search</string>
 
     <string name="synopsis_title">Synopsis</string>
 
@@ -84,6 +87,7 @@
     <string name="ListOfSkills">List of Skills</string>
     <string name="Effect">Effect</string>
     <string name="Skill">Skill</string>
+
 
 
 </resources>

@@ -505,9 +505,15 @@
     <!-- Container for contents of drawer - use NavigationView to make configuration easier -->
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
+        android:layout_width="276dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:fitsSystemWindows="true" />
+        android:background="#535353"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_main"
+        app:itemTextColor="#FFFFFF"
+        app:menu="@menu/activity_main_drawer"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp" />
 
 </android.support.v4.widget.DrawerLayout>

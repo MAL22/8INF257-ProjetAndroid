@@ -4,31 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:showIn="navigation_view">
+    <item
+        android:id="@+id/nav_Categories"
+        android:title="@string/categoriesTitle">
+        <menu>
+            <item
+                android:id="@+id/nav_Personality"
+                android:icon="@mipmap/icons8psychology50"
+                android:title="@string/Personality"
+                app:showAsAction="always" />
+            <item
+                android:id="@+id/nav_Weakness"
+                android:icon="@mipmap/icons8confusion50"
+                android:title="@string/Weakness" />
 
-
-    <group android:checkableBehavior="single">
-        <item android:title="@string/categoriesTitle"
-            android:layout_marginRight="25dp"/>
-        <item
-            android:id="@+id/nav_camera"
-            android:icon="@mipmap/icons8psychology50"
-            app:showAsAction="always"
-            android:title="@string/Personality"
-            />
-        <item
-            android:id="@+id/nav_gallery"
-            android:title="@string/Weakness"
-            android:icon="@mipmap/icons8confusion50"/>
-
-        <item
-            android:id="@+id/nav_slideshow"
-            android:title="@string/Resistance"
-            android:icon="@mipmap/icons8muscle50"/>
-        <item
-            android:id="@+id/nav_manage"
-            android:title="@string/Arcana"
-            android:icon="@mipmap/icons8venetianmask50"/>
-    </group>
-
-
+            <item
+                android:id="@+id/nav_Resistance"
+                android:icon="@mipmap/icons8muscle50"
+                android:title="@string/Resistance" />
+            <item
+                android:id="@+id/nav_Arcana"
+                android:icon="@mipmap/icons8venetianmask50"
+                android:title="@string/Arcana" />
+        </menu>
+    </item>
 </menu>

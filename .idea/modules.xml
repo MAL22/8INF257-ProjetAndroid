@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://I:\8INF257\WikiPersona\8INF257-ProjetAndroid.iml" filepath="I:\8INF257\WikiPersona\8INF257-ProjetAndroid.iml" />
-      <module fileurl="file://$PROJECT_DIR$/WikiPersona.iml" filepath="$PROJECT_DIR$/WikiPersona.iml" />
-      <module fileurl="file://C:\Users\Amos\Documents\GitHub\8INF257-ProjetAndroid\WikiPersona.iml" filepath="C:\Users\Amos\Documents\GitHub\8INF257-ProjetAndroid\WikiPersona.iml" />
+      <module fileurl="file://$PROJECT_DIR$/8INF257-ProjetAndroid.iml" filepath="$PROJECT_DIR$/8INF257-ProjetAndroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

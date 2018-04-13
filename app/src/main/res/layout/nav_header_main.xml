@@ -2,36 +2,95 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="125dp"
+    android:layout_width="276dp"
+    android:layout_height="176dp"
     android:background="#8c030e"
     android:gravity="bottom"
     android:orientation="horizontal"
     android:paddingBottom="16dp"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
     android:paddingTop="16dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <Button
-        android:id="@+id/buttonHome"
-        android:layout_width="wrap_content"
-        android:layout_height="39dp"
-        android:text="Home"
-        android:background="#121212"
-         />
 
-    <Button
-        android:id="@+id/search_button"
-        android:layout_width="wrap_content"
-        android:layout_height="39dp"
-        android:text="Search"
-        android:background="#121212"
-        android:layout_marginStart="70dp"
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <TextView
+            android:id="@+id/nav_header_Menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:text="@string/nav_menu_title"
+            android:textSize="36sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/nav_header_appFullname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="@string/app_fullname"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nav_header_Menu" />
 
-        />
+        <EditText
+            android:id="@+id/nav_header_searchPersonaEditText"
+            android:layout_width="148dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginStart="16dp"
+            android:ems="10"
+            android:inputType="text"
+            android:labelFor="@id/nav_header_searchPersonaEditText"
+            android:text="@string/nav_menu_editText"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
+        <Button
+            android:id="@+id/nav_header_searchButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="8dp"
+            android:text="@string/nav_menu_searchButton_Text"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/nav_header_searchPersonaEditText" />
 
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="84dp"
+            android:layout_height="72dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="6dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/nav_header_Menu"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@mipmap/morgana" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="84dp"
+            android:layout_height="72dp"
+            android:layout_marginEnd="19dp"
+            android:layout_marginTop="6dp"
+            android:scaleX="-1"
+            app:layout_constraintEnd_toStartOf="@+id/nav_header_Menu"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@mipmap/morgana" />
+
+    </android.support.constraint.ConstraintLayout>
 </LinearLayout>
