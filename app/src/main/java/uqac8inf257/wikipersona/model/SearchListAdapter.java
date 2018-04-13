@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.TextView;
 
 import java.util.Vector;
@@ -20,16 +21,39 @@ public class SearchListAdapter extends RecyclerView.Adapter<SearchListAdapter.Vi
     private Vector<Shadow> mShadows;
     private Context mContext;
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    private OnItemClickListener listener;
+
+    public interface OnItemClickListener {
+        void onItemClick(View itemView, int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView mRealName;
         public TextView mFakeName;
 
-        public ViewHolder(View itemView) {
+        public ViewHolder(final View itemView) {
             super(itemView);
             mRealName = itemView.findViewById(R.id.elementRealName);
             mFakeName = itemView.findViewById(R.id.elementFakeName);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            listener.onItemClick(itemView, position);
+                        }
+                    }
+                }
+            });
         }
     }
+
 
     public SearchListAdapter(Context context, Vector<Shadow> shadows) {
         mShadows = shadows;
@@ -57,6 +81,7 @@ public class SearchListAdapter extends RecyclerView.Adapter<SearchListAdapter.Vi
 
         textView = viewHolder.mFakeName;
         textView.setText(shadow.getFakeName());
+
 
     }
 

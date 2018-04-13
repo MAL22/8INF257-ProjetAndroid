@@ -1,5 +1,6 @@
 package uqac8inf257.wikipersona.model;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.SQLException;
@@ -22,10 +23,10 @@ import uqac8inf257.wikipersona.database.DatabaseHelper;
 public class MainController {
 
     private DatabaseHelper db;
-    private MainActivity main;
+    private Activity activity;
 
-    public MainController(Context context, MainActivity main) {
-        this.main = main;
+    public MainController(Context context, Activity activity) {
+        this.activity = activity;
         db = new DatabaseHelper(context);
     }
 
@@ -44,23 +45,42 @@ public class MainController {
         db.closeDatabase();
     }
 
-    public void displayRandomShadow() {
-        openDatabase();
-        Shadow result = db.getDBShadow().getRandom();
-        closeDatabase();
-
-        Intent intent = new Intent(main, PersonaActivity.class);
-        intent.putExtra("shadow", new Gson().toJson(result));
-        main.startActivity(intent);
+    private void launchShadowIntent(Shadow shadow) {
+        Intent intent = new Intent(activity, PersonaActivity.class);
+        intent.putExtra("shadow", new Gson().toJson(shadow));
+        activity.startActivity(intent);
     }
 
-    public void searchShadows() {
+    private void launchSearchIntent(Vector<Shadow> shadows) {
+        Intent intent = new Intent(activity, SearchList.class);
+        intent.putExtra("shadows", new Gson().toJson(shadows));
+        activity.startActivity(intent);
+    }
+
+    public void displayShadow(Shadow shadow) {
+        launchShadowIntent(shadow);
+    }
+
+    public void displayShadow(int id) {
         openDatabase();
-        Vector<Shadow> result = db.getDBShadow().getAll();
+        Shadow shadow = db.getDBShadow().byID(id);
         closeDatabase();
 
-        Intent intent = new Intent(main, SearchList.class);
-        intent.putExtra("shadows", new Gson().toJson(result));
-        main.startActivity(intent);
+        launchShadowIntent(shadow);
+    }
+
+    public void displayRandomShadow() {
+        openDatabase();
+        Shadow shadow = db.getDBShadow().getRandom();
+        closeDatabase();
+        launchShadowIntent(shadow);
+    }
+
+    public void displayAllShadows() {
+        openDatabase();
+        Vector<Shadow> shadows = db.getDBShadow().getAll();
+        closeDatabase();
+
+        launchSearchIntent(shadows);
     }
 }

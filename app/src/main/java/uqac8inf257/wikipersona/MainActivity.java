@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btnRandom:
                 Log.v("wiki", "btnRandom_onClick");
                 //mainController.displayRandomShadow();
-                mainController.searchShadows();
+                mainController.displayAllShadows();
                 break;
 
             default:

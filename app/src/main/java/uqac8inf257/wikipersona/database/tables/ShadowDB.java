@@ -121,11 +121,11 @@ public class ShadowDB {
         return executeQuery(query, null);
     }
 
-    public Vector<Shadow> byID(int id) {
+    public Shadow byID(int id) {
         String query = SELECT + FROM +
                 "\nWHERE sh.Arcana_ID = a.ID and sh.Personality_ID = p.ID and sh.ID = ?";
 
-        return executeQuery(query, new String[]{String.valueOf(id)});
+        return executeQuery(query, new String[]{String.valueOf(id)}).firstElement();
     }
 
     public Vector<Shadow> byRealName(String name) {

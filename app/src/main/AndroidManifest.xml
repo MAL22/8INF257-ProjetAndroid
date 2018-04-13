@@ -21,7 +21,6 @@
         </activity>
         <activity android:name=".PersonaActivity" />
         <activity android:name=".SearchList" />
-        <activity android:name=".SearchElement" />
     </application>
 
 </manifest>
