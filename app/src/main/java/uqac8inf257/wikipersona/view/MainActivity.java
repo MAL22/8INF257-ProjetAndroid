@@ -1,4 +1,4 @@
-package uqac8inf257.wikipersona;
+package uqac8inf257.wikipersona.view;
 
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -6,17 +6,29 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ExpandableListView;
 
-import uqac8inf257.wikipersona.model.MainController;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import uqac8inf257.wikipersona.R;
+import uqac8inf257.wikipersona.controller.MainController;
 
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener{
+        implements NavigationView.OnNavigationItemSelectedListener {
 
     MainController mainController;
     private DrawerLayout navigationDrawer;
+
+    ExpandableListAdapter listAdapter;
+    ExpandableListView expListView;
+    List<String> listDataHeader;
+    HashMap<String, List<String>> listDataChild;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,10 +36,35 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         mainController = new MainController(this, this);
 
-        navigationDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        navigationDrawer = findViewById(R.id.drawer_layout);
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        expListView = findViewById(R.id.lvExp);
+
+        listDataHeader = new ArrayList<>();
+        listDataChild = new HashMap<>();
+
+        listDataHeader.add("lol");
+        listDataHeader.add("Oh no!");
+
+        List<String> lmao = new ArrayList<>();
+        lmao.add("XD");
+        lmao.add("wut");
+
+        List<String> lmao2 = new ArrayList<>();
+        lmao2.add("GG");
+
+        listDataChild.put(listDataHeader.get(0), lmao);
+        listDataChild.put(listDataHeader.get(1), lmao2);
+
+        listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild);
+
+        expListView.setAdapter(listAdapter);
+
+        Log.i("wiki", String.valueOf(listDataHeader.size()));
+        Log.i("wiki", String.valueOf(listDataChild.size()));
     }
 
     @Override
@@ -55,8 +92,7 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        switch(id)
-        {
+       /* switch (id) {
             case R.id.nav_Personality:
                 Log.i("wiki", "nav_Personality");
                 navigationDrawer.closeDrawer(GravityCompat.START);
@@ -78,7 +114,7 @@ public class MainActivity extends AppCompatActivity
                 Log.i("wiki", "nav_Arcana");
                 navigationDrawer.closeDrawer(GravityCompat.START);
                 return true;
-        }
+        }*/
 
         return true;
     }
@@ -88,7 +124,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.btnRandom:
                 Log.v("wiki", "btnRandom_onClick");
                 //mainController.displayRandomShadow();
-                mainController.displayAllShadows();
+                mainController.displayRandomShadow();
                 break;
 
             default:

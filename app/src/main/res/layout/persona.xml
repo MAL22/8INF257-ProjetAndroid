@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:background="#121212"
     android:fitsSystemWindows="true"
-    tools:context="uqac8inf257.wikipersona.PersonaActivity">
+    tools:context="uqac8inf257.wikipersona.view.PersonaActivity">
 
     <!-- Layout to contain contents of main body of screen (drawer will slide over this) -->
 
@@ -944,12 +944,5 @@
             </android.support.constraint.ConstraintLayout>
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
-
-    <android.support.design.widget.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true" />
 
 </android.support.v4.widget.DrawerLayout>

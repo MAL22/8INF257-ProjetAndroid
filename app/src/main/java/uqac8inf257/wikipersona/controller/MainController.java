@@ -1,4 +1,4 @@
-package uqac8inf257.wikipersona.model;
+package uqac8inf257.wikipersona.controller;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,9 +10,8 @@ import com.google.gson.Gson;
 import java.io.IOException;
 import java.util.Vector;
 
-import uqac8inf257.wikipersona.MainActivity;
-import uqac8inf257.wikipersona.PersonaActivity;
-import uqac8inf257.wikipersona.SearchList;
+import uqac8inf257.wikipersona.view.PersonaActivity;
+import uqac8inf257.wikipersona.view.SearchList;
 import uqac8inf257.wikipersona.data.Shadow;
 import uqac8inf257.wikipersona.database.DatabaseHelper;
 

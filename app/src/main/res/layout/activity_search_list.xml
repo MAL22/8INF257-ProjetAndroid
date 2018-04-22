@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#121212"
     android:orientation="vertical"
-    tools:context="uqac8inf257.wikipersona.SearchList">
+    tools:context="uqac8inf257.wikipersona.view.SearchList">
 
     <TextView
         android:layout_width="match_parent"

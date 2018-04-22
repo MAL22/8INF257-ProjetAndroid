@@ -1,14 +1,12 @@
-package uqac8inf257.wikipersona;
+package uqac8inf257.wikipersona.view;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
 
-import org.w3c.dom.Text;
-
+import uqac8inf257.wikipersona.R;
 import uqac8inf257.wikipersona.data.Shadow;
 
 /**

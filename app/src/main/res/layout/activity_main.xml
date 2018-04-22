@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#121212"
     android:fitsSystemWindows="true"
-    tools:context="uqac8inf257.wikipersona.MainActivity">
+    tools:context="uqac8inf257.wikipersona.view.MainActivity">
 
     <!-- Layout to contain contents of main body of screen (drawer will slide over this) -->
     <ScrollView
@@ -42,8 +42,8 @@
                 style="@style/P5.TextTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
                 android:layout_marginEnd="4dp"
+                android:layout_marginStart="4dp"
                 android:layout_marginTop="8dp"
                 android:background="#8c030e"
                 android:gravity="center"
@@ -55,15 +55,15 @@
                 android:id="@+id/synopsisText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="0dp"
                 android:background="#212121"
-                android:paddingStart="2dp"
-                android:paddingEnd="2dp"
-                android:paddingTop="2dp"
-                android:paddingBottom="2dp"
                 android:gravity="center"
+                android:paddingBottom="2dp"
+                android:paddingEnd="2dp"
+                android:paddingStart="2dp"
+                android:paddingTop="2dp"
                 android:text="Persona 5 is fantasy based on reality and follows a group of troubled high school students: the protagonist and a collection of compatriots he meets along the way. Together they form the Phantom Thieves of Hearts and their goal is to eradicate the evil in the heart of the twisted and corrupted adults by using the power of Personas, a smartphone app and a talking cat named Morgana."
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -74,8 +74,8 @@
                 style="@style/P5.TextTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
                 android:layout_marginEnd="4dp"
+                android:layout_marginStart="4dp"
                 android:layout_marginTop="8dp"
                 android:background="#8c030e"
                 android:gravity="center"
@@ -90,10 +90,10 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:background="#212121"
-                android:paddingStart="2dp"
-                android:paddingEnd="2dp"
-                android:paddingTop="2dp"
                 android:paddingBottom="2dp"
+                android:paddingEnd="2dp"
+                android:paddingStart="2dp"
+                android:paddingTop="2dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -311,13 +311,13 @@
                 android:layout_marginTop="8dp"
                 android:background="#8c030e"
                 android:elevation="0dp"
+                android:onClick="btnRandom_onClick"
                 android:text="@string/randomPersona"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
-                android:onClick="btnRandom_onClick" />
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 
             <android.support.constraint.ConstraintLayout
                 android:id="@+id/constraintLayout"
@@ -497,9 +497,12 @@
                     app:layout_constraintStart_toEndOf="@+id/gameInfo_platTitle"
                     app:layout_constraintTop_toTopOf="@+id/gameInfo_platTitle" />
 
+
             </android.support.constraint.ConstraintLayout>
 
+
         </android.support.constraint.ConstraintLayout>
+
     </ScrollView>
 
     <!-- Container for contents of drawer - use NavigationView to make configuration easier -->
@@ -512,8 +515,15 @@
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_main"
         app:itemTextColor="#FFFFFF"
-        app:menu="@menu/activity_main_drawer"
         tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp" />
+        tools:layout_editor_absoluteY="8dp">
+        <!--app:menu="@menu/activity_main_drawer"-->
 
+        <ExpandableListView
+            android:id="@+id/lvExp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/nav_header_height" />
+
+    </android.support.design.widget.NavigationView>
 </android.support.v4.widget.DrawerLayout>
