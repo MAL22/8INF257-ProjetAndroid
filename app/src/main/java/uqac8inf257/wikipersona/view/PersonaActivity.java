@@ -47,10 +47,8 @@ public class PersonaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.persona);
 
-        String jsonMyObj;
         Bundle extras = getIntent().getExtras();
-        jsonMyObj = extras.getString("shadow");
-        Shadow shadow = new Gson().fromJson(jsonMyObj, Shadow.class);
+        Shadow shadow = (Shadow) extras.getSerializable("shadow");
 
         mNomPersona = findViewById(R.id.nomPersona);
         mNomShadow = findViewById(R.id.nomShadow);

@@ -4,6 +4,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.Vector;
 
 import uqac8inf257.wikipersona.data.Arcana;
@@ -47,7 +48,8 @@ public class ShadowDB {
     private static String FROM =
             "\nFROM Shadows as 'sh'," +
                     "Arcana as 'a'," +
-                    "Personalities as 'p'";
+                    "Personalities as 'p'," +
+                    "DamageTypes as 'dt'";
 
     public ShadowDB(SQLiteDatabase db, WeaknessesDB weaknessesDB, ResistancesDB resistancesDB, SkillsDB skillsDB) {
         this.db = db;
@@ -56,7 +58,7 @@ public class ShadowDB {
         this.DB_Skills = skillsDB;
     }
 
-    private Vector<Shadow> executeQuery(String query, String params[]) {
+    private ArrayList<Shadow> executeQuery(String query, String params[]) {
         Cursor cursor;
 
         if (params == null || params.length == 0)
@@ -65,7 +67,7 @@ public class ShadowDB {
             cursor = db.rawQuery(query, params);
 
         // Initialisation des structures requises pour l'obtention des données
-        Vector<Shadow> lst = new Vector<>();
+        ArrayList<Shadow> lst = new ArrayList<>();
         String cols[] = cursor.getColumnNames();
 
         Log.v("wiki", cursor.getCount() + " éléments.");
@@ -114,7 +116,7 @@ public class ShadowDB {
         return lst;
     }
 
-    public Vector<Shadow> getAll() {
+    public ArrayList<Shadow> getAll() {
         String query = SELECT + FROM +
                 "\nWHERE sh.Arcana_ID = a.ID and sh.Personality_ID = p.ID";
 
@@ -125,49 +127,63 @@ public class ShadowDB {
         String query = SELECT + FROM +
                 "\nWHERE sh.Arcana_ID = a.ID and sh.Personality_ID = p.ID and sh.ID = ?";
 
-        return executeQuery(query, new String[]{String.valueOf(id)}).firstElement();
+        return executeQuery(query, new String[]{String.valueOf(id)}).get(0);
     }
 
-    public Vector<Shadow> byRealName(String name) {
+    public ArrayList<Shadow> byRealName(String name) {
         String query = SELECT + FROM +
                 "\nWHERE sh.Arcana_ID = a.ID and sh.Personality_ID = p.ID and sh.RealName = ?";
 
         return executeQuery(query, new String[]{name});
     }
 
-    public Vector<Shadow> byFakeName(String name) {
+    public ArrayList<Shadow> byFakeName(String name) {
         String query = SELECT + FROM +
                 "\nWHERE sh.Arcana_ID = a.ID and sh.Personality_ID = p.ID and sh.FakeName = ?";
 
         return executeQuery(query, new String[]{name});
     }
 
-    public Vector<Shadow> byArcana(String arcana) {
+    public ArrayList<Shadow> byArcana(String arcana) {
         String query = SELECT + FROM +
                 "\nWHERE sh.Arcana_ID = a.ID and sh.Personality_ID = p.ID and a.Name = ?";
 
         return executeQuery(query, new String[]{arcana});
     }
 
-    public Vector<Shadow> byPersonality(String personality) {
+    public ArrayList<Shadow> byPersonality(String personality) {
         String query = SELECT + FROM +
                 "\nWHERE sh.Arcana_ID = a.ID and sh.Personality_ID = p.ID and p.Name = ?";
 
         return executeQuery(query, new String[]{personality});
     }
 
-    public Vector<Shadow> byWeakness(int id) {
+    public ArrayList<Shadow> byWeakness(int id) {
         String query = SELECT + FROM +
                 "\nWHERE sh.Arcana_ID = a.ID and sh.Personality_ID = p.ID";
 
         return executeQuery(query, new String[]{String.valueOf(id)});
     }
 
-    public Vector<Shadow> byResistance(int id) {
+    public ArrayList<Shadow> byWeakness(String damageType) {
+        String query = SELECT + FROM +
+                "\nWHERE sh.Arcana_ID = a.ID and sh.Personality_ID = p.ID and dt.Name = ?";
+
+        return executeQuery(query, new String[]{damageType});
+    }
+
+    public ArrayList<Shadow> byResistance(int id) {
         String query = SELECT + FROM +
                 "\nWHERE sh.Arcana_ID = a.ID and sh.Personality_ID = p.ID";
 
         return executeQuery(query, new String[]{String.valueOf(id)});
+    }
+
+    public ArrayList<Shadow> byResistance(String damageType) {
+        String query = SELECT + FROM +
+                "\nWHERE sh.Arcana_ID = a.ID and sh.Personality_ID = p.ID and dt.Name = ?";
+
+        return executeQuery(query, new String[]{damageType});
     }
 
     public Shadow getRandom() {
@@ -176,6 +192,6 @@ public class ShadowDB {
                 "\nORDER BY RANDOM()" +
                 "\nLIMIT 1";
 
-        return executeQuery(query, null).firstElement();
+        return executeQuery(query, null).get(0);
     }
 }

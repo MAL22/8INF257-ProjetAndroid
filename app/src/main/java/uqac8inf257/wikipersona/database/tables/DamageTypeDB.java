@@ -4,6 +4,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.Vector;
 
 import uqac8inf257.wikipersona.data.DamageType;
@@ -17,11 +18,18 @@ public class DamageTypeDB {
 
     SQLiteDatabase db;
 
+    private static String SELECT =
+            "SELECT dt.ID," +
+                    "dt.Name";
+
+    private static String FROM =
+            "\nFROM DamageTypes as 'dt'";
+
     public DamageTypeDB(SQLiteDatabase db) {
         this.db = db;
     }
 
-    private Vector<DamageType> executeQuery(String query, String params[]) {
+    private ArrayList<DamageType> executeQuery(String query, String params[]) {
         Cursor cursor;
 
         if (params == null || params.length == 0)
@@ -30,7 +38,7 @@ public class DamageTypeDB {
             cursor = db.rawQuery(query, params);
 
         // Initialisation des structures requises pour l'obtention des données
-        Vector<DamageType> lst = new Vector<>();
+        ArrayList<DamageType> lst = new ArrayList<>();
         String cols[] = cursor.getColumnNames();
 
         Log.v("wiki", cursor.getCount() + " éléments.");
@@ -55,15 +63,16 @@ public class DamageTypeDB {
         return lst;
     }
 
-    public Vector<DamageType> getAll() {
+    public ArrayList<DamageType> getAll() {
+        String query = SELECT + FROM;
+        return executeQuery(query, null);
+    }
+
+    public ArrayList<DamageType> byID(int id) {
         return null;
     }
 
-    public Vector<DamageType> byID(int id) {
-        return null;
-    }
-
-    public Vector<DamageType> byName(String name) {
+    public ArrayList<DamageType> byName(String name) {
         return null;
     }
 }

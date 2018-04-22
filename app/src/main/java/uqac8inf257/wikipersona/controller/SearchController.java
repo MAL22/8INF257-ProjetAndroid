@@ -8,6 +8,7 @@ import android.database.SQLException;
 import com.google.gson.Gson;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import uqac8inf257.wikipersona.view.PersonaActivity;
@@ -46,13 +47,13 @@ public class SearchController {
 
     private void launchShadowIntent(Shadow shadow) {
         Intent intent = new Intent(activity, PersonaActivity.class);
-        intent.putExtra("shadow", new Gson().toJson(shadow));
+        intent.putExtra("shadow", shadow);
         activity.startActivity(intent);
     }
 
-    private void launchSearchIntent(Vector<Shadow> shadows) {
+    private void launchSearchIntent(ArrayList<Shadow> shadows) {
         Intent intent = new Intent(activity, SearchList.class);
-        intent.putExtra("shadows", new Gson().toJson(shadows));
+        intent.putExtra("shadows", shadows);
         activity.startActivity(intent);
     }
 
@@ -68,9 +69,9 @@ public class SearchController {
         launchShadowIntent(shadow);
     }
 
-    public Vector<Shadow> searchShadows() {
+    public ArrayList<Shadow> searchShadows() {
         openDatabase();
-        Vector<Shadow> result = db.getDBShadow().getAll();
+        ArrayList<Shadow> result = db.getDBShadow().getAll();
         closeDatabase();
         return result;
     }

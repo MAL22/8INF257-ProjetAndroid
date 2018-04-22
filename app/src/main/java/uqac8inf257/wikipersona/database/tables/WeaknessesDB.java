@@ -4,6 +4,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.Vector;
 
 import uqac8inf257.wikipersona.data.DamageType;
@@ -20,7 +21,7 @@ public class WeaknessesDB {
         this.db = db;
     }
 
-    private Vector<DamageType> executeQuery(String query, String params[]) {
+    private ArrayList<DamageType> executeQuery(String query, String params[]) {
         Cursor cursor;
 
         if (params == null || params.length == 0)
@@ -29,7 +30,7 @@ public class WeaknessesDB {
             cursor = db.rawQuery(query, params);
 
         // Initialisation des structures requises pour l'obtention des données
-        Vector<DamageType> lst = new Vector<>();
+        ArrayList<DamageType> lst = new ArrayList<>();
         String cols[] = cursor.getColumnNames();
 
         Log.v("wiki", cursor.getCount() + " éléments.");
@@ -54,7 +55,7 @@ public class WeaknessesDB {
         return lst;
     }
 
-    public Vector<DamageType> byShadowID(int id) {
+    public ArrayList<DamageType> byShadowID(int id) {
         String query = "SELECT dt.ID, dt.Name \n" +
                 "FROM DamageTypes as 'dt', Weaknesses as 'w' \n" +
                 "WHERE w.ID_Shadow = ? and dt.ID = w.ID_DamageType";

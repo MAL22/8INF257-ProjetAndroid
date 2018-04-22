@@ -27,7 +27,7 @@
     <string name="gameInfoReleaseDate_Europe">Europe</string>
     <string name="gameInfoReleaseDate_EuropeDate">April 4 2017</string>
 
-    <string name="categoriesTitle">Show by...</string>
+    <string name="categoriesTitle">Categories</string>
     <string name="catFool">Fool</string>
     <string name="catMagician">Magician</string>
     <string name="catPriestess">Priestess</string>

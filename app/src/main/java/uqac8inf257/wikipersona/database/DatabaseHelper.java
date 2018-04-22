@@ -167,5 +167,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return DB_Skills;
     }
 
-    // protected abstract Vector executeQuery(String query, String params[]);
+    public DamageTypeDB getDBDamageType() {
+        return DB_DamageType;
+    }
 }

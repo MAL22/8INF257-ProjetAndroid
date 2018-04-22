@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.List;
 import java.util.Vector;
 
 import uqac8inf257.wikipersona.R;
@@ -17,7 +18,7 @@ import uqac8inf257.wikipersona.data.Shadow;
  */
 
 public class SearchListAdapter extends RecyclerView.Adapter<SearchListAdapter.ViewHolder> {
-    private Vector<Shadow> mShadows;
+    private List<Shadow> mShadows;
     private Context mContext;
 
     private OnItemClickListener listener;
@@ -54,7 +55,7 @@ public class SearchListAdapter extends RecyclerView.Adapter<SearchListAdapter.Vi
     }
 
 
-    public SearchListAdapter(Context context, Vector<Shadow> shadows) {
+    public SearchListAdapter(Context context, List<Shadow> shadows) {
         mShadows = shadows;
         mContext = context;
     }

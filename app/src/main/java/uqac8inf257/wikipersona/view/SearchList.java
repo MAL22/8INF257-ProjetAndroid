@@ -6,6 +6,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.google.gson.Gson;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 import uqac8inf257.wikipersona.R;
@@ -19,8 +23,9 @@ public class SearchList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_list);
 
+        Bundle extras = getIntent().getExtras();
+        final ArrayList<Shadow> shadows = (ArrayList<Shadow>) extras.getSerializable("shadows");
         final SearchController sc = new SearchController(this, this);
-        final Vector<Shadow> shadows = sc.searchShadows();
 
         RecyclerView searchView = findViewById(R.id.searchView);
 

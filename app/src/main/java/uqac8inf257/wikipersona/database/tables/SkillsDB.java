@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.Vector;
 
 import uqac8inf257.wikipersona.data.Skill;
@@ -21,7 +22,7 @@ public class SkillsDB {
         this.db = db;
     }
 
-    private Vector<Skill> executeQuery(String query, String params[]) {
+    private ArrayList<Skill> executeQuery(String query, String params[]) {
         Cursor cursor;
 
         if (params == null || params.length == 0)
@@ -30,7 +31,7 @@ public class SkillsDB {
             cursor = db.rawQuery(query, params);
 
         // Initialisation des structures requises pour l'obtention des données
-        Vector<Skill> lst = new Vector<>();
+        ArrayList<Skill> lst = new ArrayList<>();
         String cols[] = cursor.getColumnNames();
 
         Log.v("wiki", cursor.getCount() + " éléments.");
@@ -56,7 +57,7 @@ public class SkillsDB {
         return lst;
     }
 
-    public Vector<Skill> byShadowID(int id) {
+    public ArrayList<Skill> byShadowID(int id) {
         String query = "SELECT sk.ID, sk.Name, sk.Effect \n" +
                 "FROM Skills as 'sk' \n" +
                 "WHERE sk.ID_Shadow = ?";

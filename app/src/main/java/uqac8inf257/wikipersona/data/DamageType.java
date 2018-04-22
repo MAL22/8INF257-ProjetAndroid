@@ -1,10 +1,12 @@
 package uqac8inf257.wikipersona.data;
 
+import java.io.Serializable;
+
 /**
  * Created by mimil on 2018-03-26.
  */
 
-public class DamageType {
+public class DamageType implements Serializable {
     private final int id;
     private String name;
 

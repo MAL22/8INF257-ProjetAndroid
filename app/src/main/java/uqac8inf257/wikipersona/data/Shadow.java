@@ -1,12 +1,15 @@
 package uqac8inf257.wikipersona.data;
 
+
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Vector;
 
 /**
  * Created by mimil on 2018-03-08.
  */
 
-public class Shadow {
+public class Shadow implements Serializable {
 
     private final int id;
     private String fakeName;
@@ -15,9 +18,9 @@ public class Shadow {
     private Arcana arcana;
     private Personality personality;
     private Statistics stats;
-    private Vector<Skill> skills;
-    private Vector<DamageType> weaknesses;
-    private Vector<DamageType> resistances;
+    private ArrayList<Skill> skills;
+    private ArrayList<DamageType> weaknesses;
+    private ArrayList<DamageType> resistances;
 
     private int level;
     private int hp;
@@ -35,9 +38,9 @@ public class Shadow {
             Arcana arcana,
             Personality personality,
             Statistics stats,
-            Vector<Skill> skills,
-            Vector<DamageType> weaknesses,
-            Vector<DamageType> resistances,
+            ArrayList<Skill> skills,
+            ArrayList<DamageType> weaknesses,
+            ArrayList<DamageType> resistances,
             int level,
             int hp,
             int sp,
@@ -99,17 +102,17 @@ public class Shadow {
         return stats;
     }
 
-    public Vector<Skill> getSkills() {
+    public ArrayList<Skill> getSkills() {
 
         return skills;
     }
 
-    public Vector<DamageType> getWeaknesses() {
+    public ArrayList<DamageType> getWeaknesses() {
 
         return weaknesses;
     }
 
-    public Vector<DamageType> getResistances() {
+    public ArrayList<DamageType> getResistances() {
 
         return resistances;
     }

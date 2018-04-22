@@ -4,6 +4,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.Vector;
 
 import uqac8inf257.wikipersona.data.Personality;
@@ -16,11 +17,18 @@ public class PersonalityDB {
 
     private SQLiteDatabase db;
 
+    private static String SELECT =
+            "SELECT p.ID," +
+                    "p.Name";
+
+    private static String FROM =
+            "\nFROM Personalities as 'p'";
+
     public PersonalityDB(SQLiteDatabase db) {
         this.db = db;
     }
 
-    private Vector<Personality> executeQuery(String query, String params[]) {
+    private ArrayList<Personality> executeQuery(String query, String params[]) {
         Cursor cursor;
 
         if (params == null || params.length == 0)
@@ -28,7 +36,7 @@ public class PersonalityDB {
         else
             cursor = db.rawQuery(query, params);
 
-        Vector<Personality> lst = new Vector<>();
+        ArrayList<Personality> lst = new ArrayList<>();
         String cols[] = cursor.getColumnNames();
 
         Log.v("wiki", cursor.getCount() + " éléments.");
@@ -51,5 +59,10 @@ public class PersonalityDB {
             cursor.close();
         }
         return lst;
+    }
+
+    public ArrayList<Personality> getAll() {
+        String query = SELECT + FROM;
+        return executeQuery(query, null);
     }
 }
