@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
                 EditText search = findViewById(R.id.nav_header_searchPersonaEditText);
 
                 if (search.getText() != null) {
-                    mainController.searchShadows(search.getText().toString());
+                    mainController.searchShadows(search.getText().toString().trim());
                 }
 
                 break;

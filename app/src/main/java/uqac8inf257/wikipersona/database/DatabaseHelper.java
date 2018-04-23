@@ -148,6 +148,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (newVersion > oldVersion) {
             Log.v("wiki", "Database version changed");
             db_Delete();
+            try {
+                createDatabase();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

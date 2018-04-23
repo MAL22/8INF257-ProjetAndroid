@@ -6,6 +6,8 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 
+import org.w3c.dom.Text;
+
 import uqac8inf257.wikipersona.R;
 import uqac8inf257.wikipersona.data.Shadow;
 
@@ -24,9 +26,6 @@ public class PersonaActivity extends AppCompatActivity {
     private TextView mAgility;
     private TextView mLuck;
 
-    private TextView mArcana;
-    private TextView mPersonality;
-
     private TextView mTxtGun;
     private TextView mTxtFire;
     private TextView mTxtPhys;
@@ -38,6 +37,16 @@ public class PersonaActivity extends AppCompatActivity {
     private TextView mTxtBless;
     private TextView mTxtCurse;
     private TextView mTxtAlmi;
+
+    private TextView mTxtArcana;
+    private TextView mTxtLevel;
+    private TextView mTxtHP;
+    private TextView mTxtSP;
+    private TextView mTxtType;
+    private TextView mTxtEXP;
+    private TextView mTxtYen;
+    private TextView mTxtMatDrop;
+    private TextView mTxtSkillCard;
 
     private static final String weakTxt = "WEAK";
     private static final String resistTxt = "RESIST";
@@ -72,6 +81,16 @@ public class PersonaActivity extends AppCompatActivity {
         mTxtCurse = findViewById(R.id.tableTxtCurse);
         mTxtAlmi = findViewById(R.id.tableTxtAlmi);
 
+        mTxtArcana = findViewById(R.id.tableTxtArcana);
+        mTxtLevel = findViewById(R.id.tableTxtLevel);
+        mTxtHP = findViewById(R.id.tableTxtHP);
+        mTxtSP = findViewById(R.id.tableTxtSP);
+        mTxtType = findViewById(R.id.tableTxtType);
+        mTxtEXP = findViewById(R.id.tableTxtEXP);
+        mTxtYen = findViewById(R.id.tableTxtYen);
+        mTxtMatDrop = findViewById(R.id.tableTxtMaterialDrop);
+        mTxtSkillCard = findViewById(R.id.tableTxtSkillCard);
+
         //--- SETTING ELEMENTS VALUES ---
 
         mNomPersona.setText(shadow.getRealName());
@@ -83,6 +102,17 @@ public class PersonaActivity extends AppCompatActivity {
         mEndurance.setText(String.valueOf(shadow.getStats().getEndurance()));
         mMagic.setText(String.valueOf(shadow.getStats().getMagic()));
         mLuck.setText(String.valueOf(shadow.getStats().getLuck()));
+
+        mTxtArcana.setText(shadow.getArcana().getName());
+        mTxtLevel.setText(String.valueOf(shadow.getLevel()));
+        mTxtHP.setText(String.valueOf(shadow.getHp()));
+        mTxtSP.setText(String.valueOf(shadow.getSp()));
+        mTxtType.setText(shadow.getPersonality().getName());
+        mTxtEXP.setText(String.valueOf(shadow.getExp()));
+        mTxtYen.setText(String.valueOf(shadow.getYen()));
+        mTxtMatDrop.setText(shadow.getDrop());
+        mTxtSkillCard.setText(shadow.getSkillCard());
+
 
         for (int i = 0; i < shadow.getWeaknesses().size(); i++) {
             switch (shadow.getWeaknesses().get(i).getId()) {
