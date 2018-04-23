@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
 
@@ -79,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
         expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView expandableListView, View view, int groupPosition, int childPosition, long id) {
-                Toast.makeText(getApplicationContext(), "\"" + listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition) + "\"", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(),listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition), Toast.LENGTH_SHORT).show();
 
                 switch (groupPosition) {
                     case 0:
@@ -129,13 +130,21 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void btnRandom_onClick(View v) {
+    public void onClickEventHandler(View v) {
         switch (v.getId()) {
             case R.id.btnRandom:
                 Log.v("wiki", "btnRandom_onClick");
                 mainController.displayRandomShadow();
                 break;
+            case R.id.nav_header_searchButton:
+                //Toast.makeText(getApplicationContext(),"Click!",Toast.LENGTH_SHORT).show();
+                EditText search = findViewById(R.id.nav_header_searchPersonaEditText);
 
+                if (search.getText() != null) {
+                    mainController.searchShadows(search.getText().toString());
+                }
+
+                break;
             default:
                 break;
         }

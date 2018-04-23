@@ -23,6 +23,28 @@ public class ShadowDB {
     private SkillsDB DB_Skills;
     private SQLiteDatabase db;
 
+    private static String DISTINCT_SELECT =
+            "SELECT DISTINCT sh.ID," +
+                    "sh.FakeName," +
+                    "sh.RealName," +
+                    "sh.History," +
+                    "a.ID," +
+                    "a.Name," +
+                    "p.ID," +
+                    "p.Name," +
+                    "sh.Strength," +
+                    "sh.Magic," +
+                    "sh.Endurance," +
+                    "sh.Agility," +
+                    "sh.Luck," +
+                    "sh.EXPLevel," +
+                    "sh.HP," +
+                    "sh.SP," +
+                    "sh.ItemDrop," +
+                    "sh.SkillCard," +
+                    "sh.EXP," +
+                    "sh.Yen";
+
     private static String SELECT =
             "SELECT sh.ID," +
                     "sh.FakeName," +
@@ -49,7 +71,9 @@ public class ShadowDB {
             "\nFROM Shadows as 'sh'," +
                     "Arcana as 'a'," +
                     "Personalities as 'p'," +
-                    "DamageTypes as 'dt'";
+                    "DamageTypes as 'dt'," +
+                    "Resistances as 'r'," +
+                    "Weaknesses as 'w'";
 
     public ShadowDB(SQLiteDatabase db, WeaknessesDB weaknessesDB, ResistancesDB resistancesDB, SkillsDB skillsDB) {
         this.db = db;
@@ -130,29 +154,36 @@ public class ShadowDB {
         return executeQuery(query, new String[]{String.valueOf(id)}).get(0);
     }
 
+    public ArrayList<Shadow> byName(String name) {
+        String query = DISTINCT_SELECT + FROM +
+                "\nWHERE sh.Arcana_ID = a.ID and sh.Personality_ID = p.ID and (sh.RealName = ? or sh.FakeName = ?)";
+
+        return executeQuery(query, new String[]{name});
+    }
+
     public ArrayList<Shadow> byRealName(String name) {
-        String query = SELECT + FROM +
+        String query = DISTINCT_SELECT + FROM +
                 "\nWHERE sh.Arcana_ID = a.ID and sh.Personality_ID = p.ID and sh.RealName = ?";
 
         return executeQuery(query, new String[]{name});
     }
 
     public ArrayList<Shadow> byFakeName(String name) {
-        String query = SELECT + FROM +
+        String query = DISTINCT_SELECT + FROM +
                 "\nWHERE sh.Arcana_ID = a.ID and sh.Personality_ID = p.ID and sh.FakeName = ?";
 
         return executeQuery(query, new String[]{name});
     }
 
     public ArrayList<Shadow> byArcana(String arcana) {
-        String query = SELECT + FROM +
+        String query = DISTINCT_SELECT + FROM +
                 "\nWHERE sh.Arcana_ID = a.ID and sh.Personality_ID = p.ID and a.Name = ?";
 
         return executeQuery(query, new String[]{arcana});
     }
 
     public ArrayList<Shadow> byPersonality(String personality) {
-        String query = SELECT + FROM +
+        String query = DISTINCT_SELECT + FROM +
                 "\nWHERE sh.Arcana_ID = a.ID and sh.Personality_ID = p.ID and p.Name = ?";
 
         return executeQuery(query, new String[]{personality});
@@ -166,8 +197,8 @@ public class ShadowDB {
     }
 
     public ArrayList<Shadow> byWeakness(String damageType) {
-        String query = SELECT + FROM +
-                "\nWHERE sh.Arcana_ID = a.ID and sh.Personality_ID = p.ID and dt.Name = ?";
+        String query = DISTINCT_SELECT + FROM +
+                "\nWHERE sh.Arcana_ID = a.ID and sh.Personality_ID = p.ID and dt.ID = w.ID_DamageType and sh.ID = w.ID_Shadow and dt.Name = ?";
 
         return executeQuery(query, new String[]{damageType});
     }
@@ -180,8 +211,8 @@ public class ShadowDB {
     }
 
     public ArrayList<Shadow> byResistance(String damageType) {
-        String query = SELECT + FROM +
-                "\nWHERE sh.Arcana_ID = a.ID and sh.Personality_ID = p.ID and dt.Name = ?";
+        String query = DISTINCT_SELECT + FROM +
+                "\nWHERE sh.Arcana_ID = a.ID and sh.Personality_ID = p.ID and dt.ID = r.ID_DamageType and sh.ID = r.ID_Shadow and dt.Name = ?";
 
         return executeQuery(query, new String[]{damageType});
     }

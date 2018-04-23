@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Vector;
 
@@ -60,6 +61,15 @@ public class MainController {
         intent.putExtra("shadows", shadows);
         //intent.putExtra("shadows", new Gson().toJson(shadows));
         activity.startActivity(intent);
+    }
+
+    public void searchShadows(String search) {
+        openDatabase();
+        ArrayList<Shadow> shadows = new ArrayList<>();
+
+        shadows.addAll(db.getDBShadow().byName(search));
+
+        launchSearchIntent(shadows);
     }
 
     public void displayShadow(Shadow shadow) {
