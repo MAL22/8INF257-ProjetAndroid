@@ -17,6 +17,7 @@ import uqac8inf257.wikipersona.data.Arcana;
 import uqac8inf257.wikipersona.data.DamageType;
 import uqac8inf257.wikipersona.data.Personality;
 import uqac8inf257.wikipersona.view.PersonaActivity;
+import uqac8inf257.wikipersona.view.PersonaInformations;
 import uqac8inf257.wikipersona.view.SearchList;
 import uqac8inf257.wikipersona.data.Shadow;
 import uqac8inf257.wikipersona.database.DatabaseHelper;
@@ -50,16 +51,23 @@ public class MainController {
         db.closeDatabase();
     }
 
-    private void launchShadowIntent(Shadow shadow) {
-        Intent intent = new Intent(activity, PersonaActivity.class);
+    private void launchShadowIntentV2(Shadow shadow) {
+        Intent intent = new Intent(activity, PersonaInformations.class);
         intent.putExtra("shadow", shadow);
         activity.startActivity(intent);
     }
 
-    private void launchSearchIntent(ArrayList<Shadow> shadows) {
+    private void launchShadowIntent(Shadow shadow) {
+        launchShadowIntentV2(shadow);
+        /*Intent intent = new Intent(activity, PersonaActivity.class);
+        intent.putExtra("shadow", shadow);
+        activity.startActivity(intent);*/
+    }
+
+    private void launchSearchIntent(ArrayList<Shadow> shadows, String search) {
         Intent intent = new Intent(activity, SearchList.class);
         intent.putExtra("shadows", shadows);
-        //intent.putExtra("shadows", new Gson().toJson(shadows));
+        intent.putExtra("search", search);
         activity.startActivity(intent);
     }
 
@@ -69,7 +77,7 @@ public class MainController {
 
         shadows.addAll(db.getDBShadow().byName(search));
 
-        launchSearchIntent(shadows);
+        launchSearchIntent(shadows, search);
     }
 
     public void displayShadow(Shadow shadow) {
@@ -85,10 +93,18 @@ public class MainController {
     }
 
     public void displayRandomShadow() {
+        displayRandomShadowV2();
+      /*  openDatabase();
+        Shadow shadow = db.getDBShadow().getRandom();
+        closeDatabase();
+        launchShadowIntent(shadow);*/
+    }
+
+    public void displayRandomShadowV2() {
         openDatabase();
         Shadow shadow = db.getDBShadow().getRandom();
         closeDatabase();
-        launchShadowIntent(shadow);
+        launchShadowIntentV2(shadow);
     }
 
     public void displayAllShadows() {
@@ -96,7 +112,7 @@ public class MainController {
         ArrayList<Shadow> shadows = db.getDBShadow().getAll();
         closeDatabase();
 
-        launchSearchIntent(shadows);
+        launchSearchIntent(shadows, null);
     }
 
     public void searchByPersonality(String personality) {
@@ -104,7 +120,7 @@ public class MainController {
         ArrayList<Shadow> shadows = db.getDBShadow().byPersonality(personality);
         closeDatabase();
 
-        launchSearchIntent(shadows);
+        launchSearchIntent(shadows, personality);
     }
 
     public void searchByArcana(String arcana) {
@@ -112,7 +128,7 @@ public class MainController {
         ArrayList<Shadow> shadows = db.getDBShadow().byArcana(arcana);
         closeDatabase();
 
-        launchSearchIntent(shadows);
+        launchSearchIntent(shadows, arcana);
     }
 
     public void searchByResistances(String damageType) {
@@ -120,7 +136,7 @@ public class MainController {
         ArrayList<Shadow> shadows = db.getDBShadow().byResistance(damageType);
         closeDatabase();
 
-        launchSearchIntent(shadows);
+        launchSearchIntent(shadows, damageType);
     }
 
     public void searchByWeaknesses(String damageType) {
@@ -128,7 +144,7 @@ public class MainController {
         ArrayList<Shadow> shadows = db.getDBShadow().byWeakness(damageType);
         closeDatabase();
 
-        launchSearchIntent(shadows);
+        launchSearchIntent(shadows, damageType);
     }
 
     public ArrayList<Personality> getPersonalities() {

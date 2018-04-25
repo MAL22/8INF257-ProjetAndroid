@@ -21,7 +21,8 @@
         </activity>
         <activity android:name=".view.PersonaActivity" />
         <activity android:name=".view.SearchList" />
-        <activity android:name=".DrawerExpandableListLayoutActivity"></activity>
+        <activity android:name=".DrawerExpandableListLayoutActivity" />
+        <activity android:name=".view.PersonaInformations"></activity>
     </application>
 
 </manifest>

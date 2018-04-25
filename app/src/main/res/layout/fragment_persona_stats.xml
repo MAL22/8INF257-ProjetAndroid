@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorSecondaryGrayDark"
+    android:fillViewport="true"
+    tools:context="uqac8inf257.wikipersona.view.PersonaStatisticsFragment">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/fragmentStatsPersonaRealName"
+            android:layout_width="match_parent"
+            android:layout_height="23dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:gravity="left"
+            android:text="Real name"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/fragmentStatsPersonaFakeName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:gravity="left"
+            android:text="Fake name"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragmentStatsPersonaRealName" />
+
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/constraintLayout9"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorPrimary"
+            android:padding="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragmentStatsPersonaFakeName">
+
+            <TextView
+                android:id="@+id/fragmentPersonaStatsTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:text="Statistics"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="2dp" />
+
+            <android.support.v7.widget.GridLayout xmlns:grid="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/fragmentPersonaStatsGrid"
+                android:layout_width="match_parent"
+                android:layout_height="232dp"
+                android:background="@color/colorPrimaryGrayDark"
+                grid:alignmentMode="alignBounds"
+                grid:columnCount="4"
+                grid:layout_constraintEnd_toEndOf="parent"
+                grid:layout_constraintStart_toStartOf="parent"
+                grid:layout_constraintTop_toBottomOf="@+id/fragmentPersonaStatsTitle"
+                grid:rowOrderPreserved="false"
+                grid:useDefaultMargins="true">
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_margin="2dp"
+                    android:gravity="start"
+                    android:orientation="vertical"
+                    grid:layout_columnSpan="2"
+                    grid:layout_gravity="fill_horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:background="@color/colorPrimary"
+                        android:padding="4dp"
+                        android:text="@string/Arcana"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/fragmentStatsPersonaArcana"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:background="@color/colorSecondaryGrayDark"
+                        android:padding="4dp"
+                        android:text="Irritable"
+                        android:textAlignment="center" />
+                </android.support.v7.widget.LinearLayoutCompat>
+
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_margin="2dp"
+                    android:gravity="end"
+                    android:orientation="vertical"
+                    grid:layout_columnSpan="1"
+                    grid:layout_gravity="fill_horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:background="@color/colorPrimary"
+                        android:padding="4dp"
+                        android:text="@string/Type"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/fragmentStatsPersonaType"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:background="@color/colorSecondaryGrayDark"
+                        android:padding="4dp"
+                        android:text="Irritable"
+                        android:textAlignment="center" />
+                </android.support.v7.widget.LinearLayoutCompat>
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_margin="2dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:background="@color/colorPrimary"
+                        android:padding="4dp"
+                        android:text="@string/Level"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/fragmentStatsPersonaLevel"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:background="@color/colorSecondaryGrayDark"
+                        android:padding="4dp"
+                        android:text="Irritable"
+                        android:textAlignment="center" />
+                </android.support.v7.widget.LinearLayoutCompat>
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_margin="2dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:background="@color/colorPrimary"
+                        android:padding="4dp"
+                        android:text="@string/HP"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/fragmentStatsPersonaHP"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:background="@color/colorSecondaryGrayDark"
+                        android:padding="4dp"
+                        android:text="Irritable"
+                        android:textAlignment="center" />
+                </android.support.v7.widget.LinearLayoutCompat>
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_margin="2dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:background="@color/colorPrimary"
+                        android:padding="4dp"
+                        android:text="@string/SP"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/fragmentStatsPersonaSP"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:background="@color/colorSecondaryGrayDark"
+                        android:padding="4dp"
+                        android:text="Irritable"
+                        android:textAlignment="center" />
+                </android.support.v7.widget.LinearLayoutCompat>
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_margin="2dp"
+                    android:gravity="end"
+                    android:orientation="vertical"
+                    grid:layout_columnSpan="1"
+                    grid:layout_gravity="fill_horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:background="@color/colorPrimary"
+                        android:padding="4dp"
+                        android:text="@string/EXP"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/fragmentStatsPersonaEXP"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:background="@color/colorSecondaryGrayDark"
+                        android:padding="4dp"
+                        android:text="450"
+                        android:textAlignment="center" />
+                </android.support.v7.widget.LinearLayoutCompat>
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_margin="2dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    grid:layout_columnSpan="1"
+                    grid:layout_gravity="fill_horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:background="@color/colorPrimary"
+                        android:padding="4dp"
+                        android:text="@string/Yen"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/fragmentStatsPersonaYen"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:background="@color/colorSecondaryGrayDark"
+                        android:padding="4dp"
+                        android:text="500"
+                        android:textAlignment="center" />
+                </android.support.v7.widget.LinearLayoutCompat>
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_margin="2dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    grid:layout_columnSpan="4"
+                    grid:layout_gravity="fill_horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:background="@color/colorPrimary"
+                        android:padding="4dp"
+                        android:text="@string/MaterialDrop"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/fragmentStatsPersonaMaterialDrop"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:background="@color/colorSecondaryGrayDark"
+                        android:padding="4dp"
+                        android:text="500"
+                        android:textAlignment="center" />
+                </android.support.v7.widget.LinearLayoutCompat>
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_margin="2dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    grid:layout_columnSpan="4"
+                    grid:layout_gravity="fill_horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:background="@color/colorPrimary"
+                        android:padding="4dp"
+                        android:text="@string/SkillCard"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/fragmentStatsPersonaSkillCard"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:background="@color/colorSecondaryGrayDark"
+                        android:padding="4dp"
+                        android:text="-"
+                        android:textAlignment="center" />
+                </android.support.v7.widget.LinearLayoutCompat>
+            </android.support.v7.widget.GridLayout>
+
+            <TextView
+                android:id="@+id/fragmentPersonaDamageTypeTableTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:text="Affinities"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                app:layout_constraintTop_toBottomOf="@+id/fragmentPersonaStatsGrid"
+                tools:layout_editor_absoluteX="2dp" />
+
+            <android.support.v7.widget.GridLayout xmlns:grid="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/fragmentPersonaDamageTypeTableGrid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:background="@color/colorPrimaryGrayDark"
+                grid:alignmentMode="alignBounds"
+                grid:columnCount="5"
+
+                grid:layout_constraintBottom_toBottomOf="parent"
+                grid:layout_constraintTop_toBottomOf="@+id/fragmentPersonaDamageTypeTableTitle"
+
+                grid:rowOrderPreserved="false"
+                grid:useDefaultMargins="true">
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:background="@color/colorPrimary"
+                        android:padding="4dp"
+                        android:text="@string/Phys"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/fragmentStatsPersonaPhysical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:background="@color/colorSecondaryGrayDark"
+                        android:padding="4dp"
+                        android:text="-"
+                        android:textAlignment="center" />
+                </android.support.v7.widget.LinearLayoutCompat>
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:background="@color/colorPrimary"
+                        android:padding="4dp"
+                        android:text="@string/Gun"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/fragmentStatsPersonaGun"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:background="@color/colorSecondaryGrayDark"
+                        android:padding="4dp"
+                        android:text="-"
+                        android:textAlignment="center" />
+                </android.support.v7.widget.LinearLayoutCompat>
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_margin="2dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:background="@color/colorPrimary"
+                        android:padding="4dp"
+                        android:text="@string/Fire"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/fragmentStatsPersonaFire"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:background="@color/colorSecondaryGrayDark"
+                        android:padding="4dp"
+                        android:text="-"
+                        android:textAlignment="center" />
+                </android.support.v7.widget.LinearLayoutCompat>
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_margin="2dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:background="@color/colorPrimary"
+                        android:padding="4dp"
+                        android:text="@string/Ice"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/fragmentStatsPersonaIce"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:background="@color/colorSecondaryGrayDark"
+                        android:padding="4dp"
+                        android:text="-"
+                        android:textAlignment="center" />
+                </android.support.v7.widget.LinearLayoutCompat>
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_margin="2dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:background="@color/colorPrimary"
+                        android:padding="4dp"
+                        android:text="@string/Elec"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/fragmentStatsPersonaElectricity"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:background="@color/colorSecondaryGrayDark"
+                        android:padding="4dp"
+                        android:text="-"
+                        android:textAlignment="center" />
+                </android.support.v7.widget.LinearLayoutCompat>
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_margin="2dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:background="@color/colorPrimary"
+                        android:padding="4dp"
+                        android:text="@string/Wind"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/fragmentStatsPersonaWind"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:background="@color/colorSecondaryGrayDark"
+                        android:padding="4dp"
+                        android:text="-"
+                        android:textAlignment="center" />
+                </android.support.v7.widget.LinearLayoutCompat>
+
+                <android.support.v7.widget.LinearLayoutCompat
+
+                    android:layout_margin="2dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:background="@color/colorPrimary"
+                        android:padding="4dp"
+                        android:text="@string/Curse"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/fragmentStatsPersonaCursed"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:background="@color/colorSecondaryGrayDark"
+                        android:padding="4dp"
+                        android:text="-"
+                        android:textAlignment="center" />
+                </android.support.v7.widget.LinearLayoutCompat>
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_margin="2dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:background="@color/colorPrimary"
+                        android:padding="4dp"
+                        android:text="@string/Bless"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/fragmentStatsPersonaBlessed"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:background="@color/colorSecondaryGrayDark"
+                        android:padding="4dp"
+                        android:text="-"
+                        android:textAlignment="center" />
+                </android.support.v7.widget.LinearLayoutCompat>
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_margin="2dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:background="@color/colorPrimary"
+                        android:padding="4dp"
+                        android:text="@string/Nucl"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/fragmentStatsPersonaNuclear"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:background="@color/colorSecondaryGrayDark"
+                        android:padding="4dp"
+                        android:text="-"
+                        android:textAlignment="center" />
+                </android.support.v7.widget.LinearLayoutCompat>
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_margin="2dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:background="@color/colorPrimary"
+                        android:padding="4dp"
+                        android:text="@string/Almi"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/fragmentStatsPersonaAlmighty"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:background="@color/colorSecondaryGrayDark"
+                        android:padding="4dp"
+                        android:text="-"
+                        android:textAlignment="center" />
+                </android.support.v7.widget.LinearLayoutCompat>
+
+                <android.support.v7.widget.LinearLayoutCompat
+
+                    android:layout_margin="2dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:background="@color/colorPrimary"
+                        android:padding="4dp"
+                        android:text="@string/Psy"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/fragmentStatsPersonaPsychic"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:background="@color/colorSecondaryGrayDark"
+                        android:padding="4dp"
+                        android:text="-"
+                        android:textAlignment="center" />
+                </android.support.v7.widget.LinearLayoutCompat>
+
+            </android.support.v7.widget.GridLayout>
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
+
+</ScrollView>
