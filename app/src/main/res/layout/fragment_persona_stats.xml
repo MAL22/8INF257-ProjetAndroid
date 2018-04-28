@@ -49,13 +49,13 @@
             android:id="@+id/constraintLayout9"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:background="@color/colorPrimary"
             android:padding="2dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fragmentStatsPersonaFakeName">
@@ -288,7 +288,7 @@
                         android:layout_weight="50"
                         android:background="@color/colorSecondaryGrayDark"
                         android:padding="4dp"
-                        android:text="500"
+                        android:text="-"
                         android:textAlignment="center" />
                 </android.support.v7.widget.LinearLayoutCompat>
 
@@ -320,40 +320,63 @@
                 </android.support.v7.widget.LinearLayoutCompat>
             </android.support.v7.widget.GridLayout>
 
+        </android.support.constraint.ConstraintLayout>
+
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/constraintLayout10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout9">
+
             <TextView
                 android:id="@+id/fragmentPersonaDamageTypeTableTitle"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimary"
                 android:text="Affinities"
                 android:textAlignment="center"
                 android:textSize="20sp"
-                app:layout_constraintTop_toBottomOf="@+id/fragmentPersonaStatsGrid"
-                tools:layout_editor_absoluteX="2dp" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <android.support.v7.widget.GridLayout xmlns:grid="http://schemas.android.com/apk/res-auto"
+            <android.support.v7.widget.GridLayout
                 android:id="@+id/fragmentPersonaDamageTypeTableGrid"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="2dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginStart="2dp"
                 android:background="@color/colorPrimaryGrayDark"
-                grid:alignmentMode="alignBounds"
-                grid:columnCount="5"
-
-                grid:layout_constraintBottom_toBottomOf="parent"
-                grid:layout_constraintTop_toBottomOf="@+id/fragmentPersonaDamageTypeTableTitle"
-
-                grid:rowOrderPreserved="false"
-                grid:useDefaultMargins="true">
+                app:alignmentMode="alignBounds"
+                app:columnCount="3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fragmentPersonaDamageTypeTableTitle"
+                app:rowOrderPreserved="false"
+                app:useDefaultMargins="true">
 
                 <android.support.v7.widget.LinearLayoutCompat
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="2dp"
-                    android:orientation="vertical">
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_columnSpan="1"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal">
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:layout_weight="50"
                         android:background="@color/colorPrimary"
@@ -363,7 +386,7 @@
 
                     <TextView
                         android:id="@+id/fragmentStatsPersonaPhysical"
-                        android:layout_width="match_parent"
+                        android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:layout_weight="50"
                         android:background="@color/colorSecondaryGrayDark"
@@ -376,10 +399,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="2dp"
-                    android:orientation="vertical">
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal">
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:layout_weight="50"
                         android:background="@color/colorPrimary"
@@ -389,7 +415,7 @@
 
                     <TextView
                         android:id="@+id/fragmentStatsPersonaGun"
-                        android:layout_width="match_parent"
+                        android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:layout_weight="50"
                         android:background="@color/colorSecondaryGrayDark"
@@ -399,11 +425,16 @@
                 </android.support.v7.widget.LinearLayoutCompat>
 
                 <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_margin="2dp"
-                    android:orientation="vertical">
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal">
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:layout_weight="50"
                         android:background="@color/colorPrimary"
@@ -413,7 +444,7 @@
 
                     <TextView
                         android:id="@+id/fragmentStatsPersonaFire"
-                        android:layout_width="match_parent"
+                        android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:layout_weight="50"
                         android:background="@color/colorSecondaryGrayDark"
@@ -423,11 +454,16 @@
                 </android.support.v7.widget.LinearLayoutCompat>
 
                 <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_margin="2dp"
-                    android:orientation="vertical">
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal">
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:layout_weight="50"
                         android:background="@color/colorPrimary"
@@ -437,7 +473,7 @@
 
                     <TextView
                         android:id="@+id/fragmentStatsPersonaIce"
-                        android:layout_width="match_parent"
+                        android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:layout_weight="50"
                         android:background="@color/colorSecondaryGrayDark"
@@ -447,11 +483,16 @@
                 </android.support.v7.widget.LinearLayoutCompat>
 
                 <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_margin="2dp"
-                    android:orientation="vertical">
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal">
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:layout_weight="50"
                         android:background="@color/colorPrimary"
@@ -461,7 +502,7 @@
 
                     <TextView
                         android:id="@+id/fragmentStatsPersonaElectricity"
-                        android:layout_width="match_parent"
+                        android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:layout_weight="50"
                         android:background="@color/colorSecondaryGrayDark"
@@ -471,11 +512,16 @@
                 </android.support.v7.widget.LinearLayoutCompat>
 
                 <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_margin="2dp"
-                    android:orientation="vertical">
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal">
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:layout_weight="50"
                         android:background="@color/colorPrimary"
@@ -485,7 +531,7 @@
 
                     <TextView
                         android:id="@+id/fragmentStatsPersonaWind"
-                        android:layout_width="match_parent"
+                        android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:layout_weight="50"
                         android:background="@color/colorSecondaryGrayDark"
@@ -495,12 +541,16 @@
                 </android.support.v7.widget.LinearLayoutCompat>
 
                 <android.support.v7.widget.LinearLayoutCompat
-
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_margin="2dp"
-                    android:orientation="vertical">
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal">
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:layout_weight="50"
                         android:background="@color/colorPrimary"
@@ -510,7 +560,7 @@
 
                     <TextView
                         android:id="@+id/fragmentStatsPersonaCursed"
-                        android:layout_width="match_parent"
+                        android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:layout_weight="50"
                         android:background="@color/colorSecondaryGrayDark"
@@ -520,11 +570,16 @@
                 </android.support.v7.widget.LinearLayoutCompat>
 
                 <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_margin="2dp"
-                    android:orientation="vertical">
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal">
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:layout_weight="50"
                         android:background="@color/colorPrimary"
@@ -534,7 +589,7 @@
 
                     <TextView
                         android:id="@+id/fragmentStatsPersonaBlessed"
-                        android:layout_width="match_parent"
+                        android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:layout_weight="50"
                         android:background="@color/colorSecondaryGrayDark"
@@ -544,11 +599,16 @@
                 </android.support.v7.widget.LinearLayoutCompat>
 
                 <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_margin="2dp"
-                    android:orientation="vertical">
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal">
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:layout_weight="50"
                         android:background="@color/colorPrimary"
@@ -558,7 +618,7 @@
 
                     <TextView
                         android:id="@+id/fragmentStatsPersonaNuclear"
-                        android:layout_width="match_parent"
+                        android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:layout_weight="50"
                         android:background="@color/colorSecondaryGrayDark"
@@ -567,12 +627,37 @@
                         android:textAlignment="center" />
                 </android.support.v7.widget.LinearLayoutCompat>
 
+            </android.support.v7.widget.GridLayout>
+
+            <android.support.v7.widget.GridLayout
+                android:id="@+id/fragmentPersonaDamageTypeTableGrid2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginStart="2dp"
+                android:background="@color/colorPrimaryGrayDark"
+                app:alignmentMode="alignBounds"
+                app:columnCount="3"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fragmentPersonaDamageTypeTableGrid"
+                app:rowOrderPreserved="false"
+                app:useDefaultMargins="true">
+
                 <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_margin="2dp"
-                    android:orientation="vertical">
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal">
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="150dp"
                         android:layout_height="match_parent"
                         android:layout_weight="50"
                         android:background="@color/colorPrimary"
@@ -582,7 +667,7 @@
 
                     <TextView
                         android:id="@+id/fragmentStatsPersonaAlmighty"
-                        android:layout_width="match_parent"
+                        android:layout_width="150dp"
                         android:layout_height="match_parent"
                         android:layout_weight="50"
                         android:background="@color/colorSecondaryGrayDark"
@@ -592,12 +677,16 @@
                 </android.support.v7.widget.LinearLayoutCompat>
 
                 <android.support.v7.widget.LinearLayoutCompat
-
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_margin="2dp"
-                    android:orientation="vertical">
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="fill_horizontal">
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="150dp"
                         android:layout_height="match_parent"
                         android:layout_weight="50"
                         android:background="@color/colorPrimary"
@@ -607,7 +696,7 @@
 
                     <TextView
                         android:id="@+id/fragmentStatsPersonaPsychic"
-                        android:layout_width="match_parent"
+                        android:layout_width="150dp"
                         android:layout_height="match_parent"
                         android:layout_weight="50"
                         android:background="@color/colorSecondaryGrayDark"
@@ -615,7 +704,6 @@
                         android:text="-"
                         android:textAlignment="center" />
                 </android.support.v7.widget.LinearLayoutCompat>
-
             </android.support.v7.widget.GridLayout>
 
         </android.support.constraint.ConstraintLayout>

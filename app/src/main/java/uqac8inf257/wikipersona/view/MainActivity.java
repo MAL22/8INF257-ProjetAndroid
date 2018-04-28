@@ -1,15 +1,27 @@
 package uqac8inf257.wikipersona.view;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.LayoutInflaterCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
+import android.widget.TextView;
 import android.widget.Toast;
+import android.support.v7.widget.Toolbar;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
     MainController mainController;
     private DrawerLayout navigationDrawer;
 
+    private Toolbar toolbar;
+    private EditText editText;
+
     ExpandableListAdapter listAdapter;
     ExpandableListView expListView;
     List<String> listDataHeader;
@@ -40,7 +55,53 @@ public class MainActivity extends AppCompatActivity {
 
         navigationDrawer = findViewById(R.id.drawer_layout);
 
+        toolbar = findViewById(R.id.mainToolbar);
+        toolbar.setTitle("Pocket Persona");
+        toolbar.setTitleTextColor(Color.WHITE);
+
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navigationDrawer.openDrawer(GravityCompat.START);
+            }
+        });
+
         expListView = findViewById(R.id.lvExp);
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        View header = navigationView.getHeaderView(0);
+        editText = header.findViewById(R.id.nav_header_searchPersonaEditText);
+
+       /* editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (!b && editText.getText() != null || editText.getText().toString() != ""){
+                    mainController.searchShadows(editText.getText().toString().trim());
+                }
+
+            }
+        });*/
+
+        editText.setOnEditorActionListener(new EditText.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH || actionId == EditorInfo.IME_ACTION_DONE || event != null && event.getAction() == KeyEvent.ACTION_DOWN &&
+                        event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
+                    if (event == null || !event.isShiftPressed()) {
+                        InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                        imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                        mainController.searchShadows(v.getText().toString().trim());
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
 
         listDataHeader = new ArrayList<>();
         listDataChild = new HashMap<>();
@@ -75,6 +136,11 @@ public class MainActivity extends AppCompatActivity {
         listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild);
 
         expListView.setAdapter(listAdapter);
+
+        for (int i = 0; i < listDataHeader.size(); i++) {
+            expListView.expandGroup(i);
+        }
+
 
         expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
@@ -145,6 +211,7 @@ public class MainActivity extends AppCompatActivity {
 
                 break;
             default:
+                Log.i("wiki", "Click!");
                 break;
         }
     }

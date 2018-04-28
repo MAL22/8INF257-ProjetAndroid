@@ -22,7 +22,12 @@
         <activity android:name=".view.PersonaActivity" />
         <activity android:name=".view.SearchList" />
         <activity android:name=".DrawerExpandableListLayoutActivity" />
-        <activity android:name=".view.PersonaInformations"></activity>
+        <activity android:name=".view.PersonaInformations" />
+        <activity android:name=".Main2Activity" />
+        <activity
+            android:name=".Main3Activity"
+            android:label="@string/title_activity_main3"
+            android:theme="@style/P5"></activity>
     </application>
 
 </manifest>

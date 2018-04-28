@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?><!-- Use DrawerLayout as root container for activity -->
+
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,501 +10,263 @@
     android:fitsSystemWindows="true"
     tools:context="uqac8inf257.wikipersona.view.MainActivity">
 
-    <!-- Layout to contain contents of main body of screen (drawer will slide over this) -->
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingBottom="4dp"
-        android:paddingLeft="4dp"
-        android:paddingRight="4dp"
-        android:paddingTop="4dp">
-
-        <android.support.constraint.ConstraintLayout
+    <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <!-- Layout to contain contents of main body of screen (drawer will slide over this) -->
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/appFullname"
-                style="@style/P5.TextTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:background="#8c030e"
-                android:gravity="center"
-                android:text="@string/app_fullname"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/synopsisTitle"
-                style="@style/P5.TextTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="4dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="8dp"
-                android:background="#8c030e"
-                android:gravity="center"
-                android:text="@string/synopsis_title"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
-
-            <TextView
-                android:id="@+id/synopsisText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="0dp"
-                android:background="#212121"
-                android:gravity="center"
-                android:paddingBottom="2dp"
-                android:paddingEnd="2dp"
-                android:paddingStart="2dp"
-                android:paddingTop="2dp"
-                android:text="Persona 5 is fantasy based on reality and follows a group of troubled high school students: the protagonist and a collection of compatriots he meets along the way. Together they form the Phantom Thieves of Hearts and their goal is to eradicate the evil in the heart of the twisted and corrupted adults by using the power of Personas, a smartphone app and a talking cat named Morgana."
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/synopsisTitle" />
-
-            <TextView
-                android:id="@+id/categoryTitle"
-                style="@style/P5.TextTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="4dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="8dp"
-                android:background="#8c030e"
-                android:gravity="center"
-                android:text="@string/categoriesTitle"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/synopsisText" />
+            android:layout_height="match_parent"
+            android:paddingBottom="4dp"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:paddingTop="?attr/actionBarSize">
 
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/constraintLayout2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:background="#212121"
-                android:paddingBottom="2dp"
-                android:paddingEnd="2dp"
-                android:paddingStart="2dp"
-                android:paddingTop="2dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/categoryTitle">
+                android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/catFool"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/synopsisTitle"
+                    style="@style/P5.TextTitle"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginTop="4dp"
-                    android:text="@string/catFool"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="#8c030e"
+                    android:gravity="center"
+                    android:text="@string/synopsis_title"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
                 <TextView
-                    android:id="@+id/catMagician"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/catMagician"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/catFool" />
-
-                <TextView
-                    android:id="@+id/catPriestess"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/catPriestess"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/catMagician" />
-
-                <TextView
-                    android:id="@+id/catEmpress"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/catEmpress"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/catPriestess" />
-
-                <TextView
-                    android:id="@+id/catEmperor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/catEmperor"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/catEmpress" />
-
-                <TextView
-                    android:id="@+id/catHierophant"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="36dp"
-                    android:layout_marginTop="4dp"
-                    android:text="@string/catHierophant"
-                    app:layout_constraintStart_toEndOf="@+id/catFool"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/catLovers"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/catLovers"
-                    app:layout_constraintStart_toStartOf="@+id/catHierophant"
-                    app:layout_constraintTop_toBottomOf="@+id/catHierophant" />
-
-                <TextView
-                    android:id="@+id/catChariot"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/catChariot"
-                    app:layout_constraintStart_toStartOf="@+id/catLovers"
-                    app:layout_constraintTop_toBottomOf="@+id/catLovers" />
-
-                <TextView
-                    android:id="@+id/catStrength"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/catStrength"
-                    app:layout_constraintStart_toStartOf="@+id/catChariot"
-                    app:layout_constraintTop_toBottomOf="@+id/catChariot" />
-
-                <TextView
-                    android:id="@+id/catHermit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/catHermit"
-                    app:layout_constraintStart_toStartOf="@+id/catStrength"
-                    app:layout_constraintTop_toBottomOf="@+id/catStrength" />
-
-                <TextView
-                    android:id="@+id/catFortune"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginTop="4dp"
-                    android:text="@string/catFortune"
-                    app:layout_constraintStart_toEndOf="@+id/catHierophant"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/catJustice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/catJustice"
-                    app:layout_constraintStart_toStartOf="@+id/catFortune"
-                    app:layout_constraintTop_toBottomOf="@+id/catFortune" />
-
-                <TextView
-                    android:id="@+id/catHangedMan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/catHangedMan"
-                    app:layout_constraintStart_toStartOf="@+id/catJustice"
-                    app:layout_constraintTop_toBottomOf="@+id/catJustice" />
-
-                <TextView
-                    android:id="@+id/catDeath"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/catDeath"
-                    app:layout_constraintStart_toStartOf="@+id/catHangedMan"
-                    app:layout_constraintTop_toBottomOf="@+id/catHangedMan" />
-
-                <TextView
-                    android:id="@+id/catTemperance"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/catTemperance"
-                    app:layout_constraintStart_toStartOf="@+id/catDeath"
-                    app:layout_constraintTop_toBottomOf="@+id/catDeath" />
-
-                <TextView
-                    android:id="@+id/catDevil"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="36dp"
-                    android:layout_marginTop="4dp"
-                    android:text="@string/catDevil"
-                    app:layout_constraintStart_toEndOf="@+id/catFortune"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/catTower"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/catTower"
-                    app:layout_constraintStart_toStartOf="@+id/catDevil"
-                    app:layout_constraintTop_toBottomOf="@+id/catDevil" />
-
-                <TextView
-                    android:id="@+id/catStar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/catStar"
-                    app:layout_constraintStart_toStartOf="@+id/catTower"
-                    app:layout_constraintTop_toBottomOf="@+id/catTower" />
-
-                <TextView
-                    android:id="@+id/catMoon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/catMoon"
-                    app:layout_constraintStart_toStartOf="@+id/catStar"
-                    app:layout_constraintTop_toBottomOf="@+id/catStar" />
-
-                <TextView
-                    android:id="@+id/catSun"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/catSun"
-                    app:layout_constraintStart_toStartOf="@+id/catMoon"
-                    app:layout_constraintTop_toBottomOf="@+id/catMoon" />
-
-                <TextView
-                    android:id="@+id/catJudgement"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/synopsisText"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:layout_marginEnd="4dp"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/catJudgement"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </android.support.constraint.ConstraintLayout>
-
-            <Button
-                android:id="@+id/btnRandom"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:background="#8c030e"
-                android:elevation="0dp"
-                android:onClick="onClickEventHandler"
-                android:text="@string/randomPersona"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
-
-            <android.support.constraint.ConstraintLayout
-                android:id="@+id/constraintLayout"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="0dp"
-                android:background="#212121"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/appFullname">
-
-                <ImageView
-                    android:id="@+id/logoView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="5dp"
-
-                    android:layout_marginStart="5dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:background="#212121"
+                    android:gravity="center"
+                    android:paddingBottom="2dp"
+                    android:paddingEnd="2dp"
+                    android:paddingStart="2dp"
+                    android:paddingTop="2dp"
+                    android:text="Persona 5 is fantasy based on reality and follows a group of troubled high school students: the protagonist and a collection of compatriots he meets along the way. Together they form the Phantom Thieves of Hearts and their goal is to eradicate the evil in the heart of the twisted and corrupted adults by using the power of Personas, a smartphone app and a talking cat named Morgana."
+                    app:layout_constraintBottom_toTopOf="@+id/btnRandom"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@mipmap/persona_5_logo" />
+                    app:layout_constraintTop_toBottomOf="@+id/synopsisTitle" />
 
-                <TextView
-                    android:id="@+id/gameInfoTitle"
-                    style="@style/P5.TextTitleBoldOnly"
+                <Button
+                    android:id="@+id/btnRandom"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:background="#8c030e"
+                    android:elevation="0dp"
+                    android:onClick="onClickEventHandler"
+                    android:text="@string/randomPersona"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/constraintLayout"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="5dp"
-                    android:background="#8c030e"
-                    android:gravity="center"
-                    android:text="@string/gameInfo_title"
+                    android:layout_marginTop="8dp"
+                    android:background="#212121"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/logoView" />
+                    app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:id="@+id/gameInfoDev"
-                    android:layout_width="wrap_content"
-                    android:layout_height="35dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="4dp"
-                    android:background="#8c030e"
-                    android:gravity="center"
-                    android:text="@string/gameInfo_dev"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/gameInfoTitle"
-                    tools:paddingEnd="2dp"
-                    tools:paddingStart="2dp" />
+                    <ImageView
+                        android:id="@+id/logoView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
 
-                <TextView
-                    android:id="@+id/gameInfoDevName"
-                    android:layout_width="0dp"
-                    android:layout_height="35dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginStart="4dp"
-                    android:background="#121212"
-                    android:gravity="center_vertical"
-                    android:paddingStart="1dp"
-                    android:text="@string/gameInfo_devName"
-                    app:layout_constraintBottom_toBottomOf="@+id/gameInfoDev"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/gameInfoDev"
-                    app:layout_constraintTop_toTopOf="@+id/gameInfoDev" />
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@mipmap/persona_5_logo" />
 
-                <TextView
-                    android:id="@+id/gameInfoPublisher"
-                    android:layout_width="0dp"
-                    android:layout_height="55dp"
-                    android:layout_marginTop="4dp"
-                    android:background="#8c030e"
-                    android:gravity="center"
-                    android:paddingEnd="2dp"
-                    android:paddingStart="2dp"
-                    android:text="@string/gameInfo_pub"
-                    app:layout_constraintEnd_toEndOf="@+id/gameInfoDev"
-                    app:layout_constraintStart_toStartOf="@+id/gameInfoDev"
-                    app:layout_constraintTop_toBottomOf="@+id/gameInfoDev" />
+                    <TextView
+                        android:id="@+id/gameInfoTitle"
+                        style="@style/P5.TextTitleBoldOnly"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="5dp"
+                        android:background="#8c030e"
+                        android:gravity="center"
+                        android:text="@string/gameInfo_title"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/logoView" />
 
-                <TextView
-                    android:id="@+id/gameInfoPublisher1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:background="#121212"
-                    android:paddingStart="1dp"
-                    android:text="@string/gameInfo_pub1"
-                    app:layout_constraintEnd_toEndOf="@+id/gameInfoDevName"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toEndOf="@+id/gameInfoPublisher"
-                    app:layout_constraintTop_toTopOf="@+id/gameInfoPublisher" />
+                    <TextView
+                        android:id="@+id/gameInfoDev"
+                        android:layout_width="wrap_content"
+                        android:layout_height="35dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="4dp"
+                        android:background="#8c030e"
+                        android:gravity="center"
+                        android:text="@string/gameInfo_dev"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/gameInfoTitle"
+                        tools:paddingEnd="2dp"
+                        tools:paddingStart="2dp" />
 
-                <TextView
-                    android:id="@+id/gameInfoPublisher2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:background="#121212"
-                    android:paddingStart="1dp"
-                    android:text="@string/gameInfo_pub2"
-                    app:layout_constraintEnd_toEndOf="@+id/gameInfoPublisher1"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/gameInfoPublisher1"
-                    app:layout_constraintTop_toBottomOf="@+id/gameInfoPublisher1" />
+                    <TextView
+                        android:id="@+id/gameInfoDevName"
+                        android:layout_width="0dp"
+                        android:layout_height="35dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="4dp"
+                        android:background="#121212"
+                        android:gravity="center_vertical"
+                        android:paddingStart="1dp"
+                        android:text="@string/gameInfo_devName"
+                        app:layout_constraintBottom_toBottomOf="@+id/gameInfoDev"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/gameInfoDev"
+                        app:layout_constraintTop_toTopOf="@+id/gameInfoDev" />
 
-                <TextView
-                    android:id="@+id/gameInfoPublisher3"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:background="#121212"
-                    android:paddingStart="1dp"
-                    android:text="@string/gameInfo_pub3"
-                    app:layout_constraintBottom_toBottomOf="@+id/gameInfoPublisher"
-                    app:layout_constraintEnd_toEndOf="@+id/gameInfoPublisher2"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/gameInfoPublisher2"
-                    app:layout_constraintTop_toBottomOf="@+id/gameInfoPublisher2" />
+                    <TextView
+                        android:id="@+id/gameInfoPublisher"
+                        android:layout_width="0dp"
+                        android:layout_height="55dp"
+                        android:layout_marginTop="4dp"
+                        android:background="#8c030e"
+                        android:gravity="center"
+                        android:paddingEnd="2dp"
+                        android:paddingStart="2dp"
+                        android:text="@string/gameInfo_pub"
+                        app:layout_constraintEnd_toEndOf="@+id/gameInfoDev"
+                        app:layout_constraintStart_toStartOf="@+id/gameInfoDev"
+                        app:layout_constraintTop_toBottomOf="@+id/gameInfoDev" />
 
-                <TextView
-                    android:id="@+id/gameInfoGenreTitle"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:background="#8c030e"
-                    android:gravity="center"
-                    android:paddingEnd="2dp"
-                    android:paddingStart="2dp"
-                    android:text="@string/gameInfo_genreTitle"
-                    app:layout_constraintEnd_toEndOf="@+id/gameInfoPublisher"
-                    app:layout_constraintStart_toStartOf="@+id/gameInfoPublisher"
-                    app:layout_constraintTop_toBottomOf="@+id/gameInfoPublisher" />
+                    <TextView
+                        android:id="@+id/gameInfoPublisher1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:background="#121212"
+                        android:paddingStart="1dp"
+                        android:text="@string/gameInfo_pub1"
+                        app:layout_constraintEnd_toEndOf="@+id/gameInfoDevName"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/gameInfoPublisher"
+                        app:layout_constraintTop_toTopOf="@+id/gameInfoPublisher" />
 
-                <TextView
-                    android:id="@+id/gameInfoGenre"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:background="#121212"
-                    android:paddingStart="1dp"
-                    android:text="@string/gameInfo_genre"
-                    app:layout_constraintEnd_toEndOf="@+id/gameInfoPublisher3"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toEndOf="@+id/gameInfoGenreTitle"
-                    app:layout_constraintTop_toTopOf="@+id/gameInfoGenreTitle" />
+                    <TextView
+                        android:id="@+id/gameInfoPublisher2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="#121212"
+                        android:paddingStart="1dp"
+                        android:text="@string/gameInfo_pub2"
+                        app:layout_constraintEnd_toEndOf="@+id/gameInfoPublisher1"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/gameInfoPublisher1"
+                        app:layout_constraintTop_toBottomOf="@+id/gameInfoPublisher1" />
 
-                <TextView
-                    android:id="@+id/gameInfo_platTitle"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="2dp"
-                    android:layout_marginTop="4dp"
-                    android:background="#8c030e"
-                    android:gravity="center"
-                    android:paddingEnd="2dp"
-                    android:paddingStart="2dp"
-                    android:text="@string/gameInfo_plat"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/gameInfoGenreTitle"
-                    app:layout_constraintStart_toStartOf="@+id/gameInfoGenreTitle"
-                    app:layout_constraintTop_toBottomOf="@+id/gameInfoGenreTitle"
-                    app:layout_constraintVertical_bias="0.0" />
+                    <TextView
+                        android:id="@+id/gameInfoPublisher3"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="#121212"
+                        android:paddingStart="1dp"
+                        android:text="@string/gameInfo_pub3"
+                        app:layout_constraintBottom_toBottomOf="@+id/gameInfoPublisher"
+                        app:layout_constraintEnd_toEndOf="@+id/gameInfoPublisher2"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/gameInfoPublisher2"
+                        app:layout_constraintTop_toBottomOf="@+id/gameInfoPublisher2" />
 
-                <TextView
-                    android:id="@+id/gameInfoplat"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginStart="4dp"
-                    android:background="#121212"
-                    android:paddingStart="1dp"
-                    android:text="@string/gameInfo_consoles"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/gameInfoGenre"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toEndOf="@+id/gameInfo_platTitle"
-                    app:layout_constraintTop_toTopOf="@+id/gameInfo_platTitle" />
+                    <TextView
+                        android:id="@+id/gameInfoGenreTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:background="#8c030e"
+                        android:gravity="center"
+                        android:paddingEnd="2dp"
+                        android:paddingStart="2dp"
+                        android:text="@string/gameInfo_genreTitle"
+                        app:layout_constraintEnd_toEndOf="@+id/gameInfoPublisher"
+                        app:layout_constraintStart_toStartOf="@+id/gameInfoPublisher"
+                        app:layout_constraintTop_toBottomOf="@+id/gameInfoPublisher" />
+
+                    <TextView
+                        android:id="@+id/gameInfoGenre"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:background="#121212"
+                        android:paddingStart="1dp"
+                        android:text="@string/gameInfo_genre"
+                        app:layout_constraintEnd_toEndOf="@+id/gameInfoPublisher3"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/gameInfoGenreTitle"
+                        app:layout_constraintTop_toTopOf="@+id/gameInfoGenreTitle" />
+
+                    <TextView
+                        android:id="@+id/gameInfo_platTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginTop="4dp"
+                        android:background="#8c030e"
+                        android:gravity="center"
+                        android:paddingEnd="2dp"
+                        android:paddingStart="2dp"
+                        android:text="@string/gameInfo_plat"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/gameInfoGenreTitle"
+                        app:layout_constraintStart_toStartOf="@+id/gameInfoGenreTitle"
+                        app:layout_constraintTop_toBottomOf="@+id/gameInfoGenreTitle"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <TextView
+                        android:id="@+id/gameInfoplat"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginStart="4dp"
+                        android:background="#121212"
+                        android:paddingStart="1dp"
+                        android:text="@string/gameInfo_consoles"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/gameInfoGenre"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/gameInfo_platTitle"
+                        app:layout_constraintTop_toTopOf="@+id/gameInfo_platTitle" />
+
+
+                </android.support.constraint.ConstraintLayout>
 
 
             </android.support.constraint.ConstraintLayout>
 
+        </ScrollView>
 
-        </android.support.constraint.ConstraintLayout>
-
-    </ScrollView>
+        <include layout="@layout/title_bar" />
+    </android.support.design.widget.CoordinatorLayout>
 
     <!-- Container for contents of drawer - use NavigationView to make configuration easier -->
     <android.support.design.widget.NavigationView
@@ -511,19 +274,19 @@
         android:layout_width="276dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="#535353"
+        android:background="@color/colorPrimary"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_main"
-        app:itemTextColor="#FFFFFF"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp">
-        <!--app:menu="@menu/activity_main_drawer"-->
+        app:itemTextColor="#FFFFFF">
 
         <ExpandableListView
             android:id="@+id/lvExp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/nav_header_height" />
+            android:groupIndicator="@drawable/custom_expandable"
+            android:layout_marginTop="@dimen/nav_header_height"
+            android:background="@color/colorPrimary" />
 
     </android.support.design.widget.NavigationView>
+
 </android.support.v4.widget.DrawerLayout>
